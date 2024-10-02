@@ -1,7 +1,7 @@
 # Instant-Weather
 ## Exercice Javascript (V1)
 
-📝Lien du projet : https://KytMj.github.io/InstantWeather/
+📝Lien du projet : https://KytMj.github.io/InstantWeather/index.html
 
 Cet exercice a pour objectifs de :
 
