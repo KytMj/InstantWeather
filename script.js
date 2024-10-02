@@ -1,4 +1,6 @@
 let select = document.querySelector('#selectCommune');
+const myToken = 'df67b5d9a4ad5c4d7edc7cb5bfd546524b5c69c768c28b951e0da9199128b388';
+//https://api.meteo-concept.com/api/ephemeride/0?token=df67b5d9a4ad5c4d7edc7cb5bfd546524b5c69c768c28b951e0da9199128b388
 
 document.querySelector('#postalCode').addEventListener('input', function (){
     if(this.value.length == 5) {
@@ -16,9 +18,22 @@ document.querySelector('#postalCode').addEventListener('input', function (){
             }
             console.log(data);
             for(let ville of data){
-                select.appendChild(new Option(ville.nom, ville.code));
-            } 
+                let option = new Option(ville.nom, ville.code/*,selected=choice()*/);
+                select.appendChild(option);
+            }      
         });
     }
 });
 
+select.childNodes.forEach(function(item){
+    console.log(item);
+})
+
+
+function weatherInformations(){
+    console.log(select.selectedIndex);
+}
+
+function choice(){
+
+}
