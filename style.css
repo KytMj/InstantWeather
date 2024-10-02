@@ -4,6 +4,9 @@ main{
     align-items: center;
 }
 
+.ghost{
+    display: none;
+}
 
 .Box{
     border : 2px black solid;
@@ -25,6 +28,16 @@ main{
 }
 
 .form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     font-size: 1.5vw;
+    margin: 15px;
+}
+
+.selectCommune{
+    padding: 0 1.5vw 0 1.5vw;
+    font-size: 1vw;
 }
 
