@@ -37,8 +37,6 @@ form{
     justify-content: space-around;
     align-items: center;
     font-size: 1.5vw;
-    margin: 15px;
-    column-gap: 1000px;
 }
 
 .selectCommune{
@@ -53,6 +51,15 @@ button{
     height : 2vw;
     background-color:green;
     color : white;
-    
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px black;
+
+}
+
+button:hover{
+    background-color: white;
+    color : black;
+    box-shadow: none;
+    margin: 7px 3px 3px 7px;
 }
 
