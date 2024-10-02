@@ -3,3 +3,41 @@ main{
     flex-direction: column;
     align-items: center;
 }
+
+.ghost{
+    display: none;
+}
+
+.Box{
+    border : 2px black solid;
+    border-radius : 20px;
+    padding : 20px;
+    margin: 10px;
+    width : 33%;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.info{
+    background-color: darkcyan;
+    color: aliceblue;
+    font-size: 2vw;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.5vw;
+    margin: 15px;
+}
+
+.selectCommune{
+    padding: 0 1.5vw 0 1.5vw;
+    font-size: 1vw;
+}
+
