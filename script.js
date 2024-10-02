@@ -7,15 +7,19 @@ document.querySelector('#postalCode').addEventListener('input', function (){
         }
         ).then((data) => {
             console.log(data);
-            // let menu = document.createElement("select");
-            // for(let ville of data){
-            //     //let newOption = document.createElement("option");
-            //     let listObj = new ListBox();
-            //     listObj.appendTo(menu);
-            //     // newOption.add(ville.nom);
-            //     // menu.appendChild(newOption);
-            //     // console.log(ville.nom);
-            // } 
+            //let select = document.querySelector('#selectCommune');
+            let select = document.getElementById("selectCommune");
+            for(let ville of data){
+                let newOption = document.createElement("option");
+                select.appendChild(newOption);
+                
+                console.log(ville.nom);
+
+                // let options=[{
+                //     Text:`${ville.nom}`
+                // }]
+                select.appendChild(newOption) ;
+            } 
         });
     }
 });
