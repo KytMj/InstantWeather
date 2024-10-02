@@ -7,8 +7,24 @@ main{
 
 .Box{
     border : 2px black solid;
-    border-radius : 10px;
+    border-radius : 20px;
     padding : 20px;
     margin: 10px;
-
+    width : 33%;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
+
+.info{
+    background-color: darkcyan;
+    color: aliceblue;
+    font-size: 2vw;
+}
+
+.form{
+    font-size: 1.5vw;
+}
+
