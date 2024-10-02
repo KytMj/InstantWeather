@@ -1,3 +1,5 @@
+let select = document.querySelector('#selectCommune');
+
 document.querySelector('#postalCode').addEventListener('input', function (){
     if(this.value.length == 5) {
         let url = `https://geo.api.gouv.fr/communes?codePostal=${this.value}&type=commune-actuelle&fields=nom,code,codesPostaux&format=json&geometry=centre`;
@@ -6,19 +8,12 @@ document.querySelector('#postalCode').addEventListener('input', function (){
             return response.json();
         }
         ).then((data) => {
+            while(select.firstChild){
+                select.removeChild(select.firstChild);
+            }
             console.log(data);
-            //let select = document.querySelector('#selectCommune');
-            let select = document.getElementById("selectCommune");
             for(let ville of data){
-                let newOption = document.createElement("option");
-                select.appendChild(newOption);
-                
-                console.log(ville.nom);
-
-                // let options=[{
-                //     Text:`${ville.nom}`
-                // }]
-                select.appendChild(newOption) ;
+                select.appendChild(new Option(ville.nom, ville.code));
             } 
         });
     }
