@@ -103,7 +103,7 @@ input{
 .cloudRight{
     position:absolute;
     top:20vw;
-    right:5px;
+    right:1%;
     width:26%;
     -webkit-animation: shake-horizontal 25s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite alternate both;
 	        animation: shake-horizontal 25s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite alternate both;
