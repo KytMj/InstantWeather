@@ -18,7 +18,7 @@ document.querySelector('#postalCode').addEventListener('input', function (){
             }
             console.log(data);
             for(let ville of data){
-                let option = new Option(ville.nom, ville.code/*,selected=choice()*/);
+                let option = new Option(ville.nom, ville.code);
                 select.appendChild(option);
             }      
         });
@@ -30,9 +30,9 @@ select.childNodes.forEach(function(item){
 })
 
 
-function weatherInformations(){
-    console.log(select.selectedIndex);
-}
+document.querySelector('#validation').addEventListener('click', function (){
+    console.log(select)
+});
 
 function choice(){
 
