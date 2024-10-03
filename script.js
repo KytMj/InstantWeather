@@ -48,6 +48,8 @@ function newResearch(){
     document.getElementById("codeResearch").className = "";
     document.getElementById("viewInfos").className = "ghost";
     document.querySelector('#postalCode').value = "";
+    document.getElementById("selectCommune").className = "selectCommune formElement ghost";
+    document.getElementById("validation").className = "formElement ghost";
     while(select.firstChild){
         select.removeChild(select.firstChild);
     }
