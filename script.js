@@ -28,5 +28,21 @@ function weatherInformations(){
     //let city = select.options[select.selectedIndex].text;    donne le nom de la commune
 
     let insee = select.value;   //donne la valeur insee de la commune sélectionnée
-    
+    let url = `https://api.meteo-concept.com/api/ephemeride/1?token=${myToken}&insee=${insee}`;
+
+    document.querySelector(".codeResearch").className = "codeResearch ghost";
+    document.querySelector(".viewInfos ghost").className = "viewInfos";
+
+    fetch(url).then((response) => {
+        return response.json();
+    }
+    ).then((data) => {
+        while(select.firstChild){
+            select.removeChild(select.firstChild);
+        }
+        for(let ville of data){
+            let option = new Option(ville.nom, ville.code);
+            select.appendChild(option);
+        }      
+    });
 }
