@@ -24,25 +24,27 @@ document.querySelector('#postalCode').addEventListener('input', function (){
     }
 });
 
-function weatherInformations(){
+function weatherInformationsToday(){
     //let city = select.options[select.selectedIndex].text;    donne le nom de la commune
 
     let insee = select.value;   //donne la valeur insee de la commune sélectionnée
-    let url = `https://api.meteo-concept.com/api/ephemeride/1?token=${myToken}&insee=${insee}`;
+    let url = `https://api.meteo-concept.com/api/forecast/daily?token=${myToken}&insee=${insee}`;
 
-    document.querySelector(".codeResearch").className = "codeResearch ghost";
-    document.querySelector(".viewInfos ghost").className = "viewInfos";
+    document.getElementById("codeResearch").className = "ghost";
+    document.getElementById("viewInfos").className = "";
 
     fetch(url).then((response) => {
         return response.json();
     }
     ).then((data) => {
-        while(select.firstChild){
-            select.removeChild(select.firstChild);
-        }
-        for(let ville of data){
-            let option = new Option(ville.nom, ville.code);
-            select.appendChild(option);
-        }      
+        document.getElementById("minimTemp").innerText = data.forecast[0].tmin + "°C";
+        document.getElementById("maxiTemp").innerText = data.forecast[0].tmax + "°C";
+        document.getElementById("rainProba").innerText = data.forecast[0].probarain + "%";
+        document.getElementById("dailySunshine").innerText = data.forecast[0].sun_hours + " heures";
     });
+}
+
+function newResearch(){
+    document.getElementById("codeResearch").className = "";
+    document.getElementById("viewInfos").className = "ghost";
 }
