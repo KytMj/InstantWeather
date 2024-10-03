@@ -14,7 +14,10 @@ body{
 }
 
 html,body{
-    height: 99%;
+    height: 98%;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .ghost{
@@ -44,9 +47,6 @@ html,body{
     background-color: rgb(211, 223, 223);
     color: rgb(38, 119, 190);
     font-size: 2vw;
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
 }
 
 .formElement{
@@ -91,9 +91,27 @@ input{
     font-size: 1vw;
 }
 
-.cloud{
+.cloudLeft{
     position:absolute;
-    width:10%;
+    top:0px;
+    left:2px;
+    width:33%;
+    -webkit-animation: shake-horizontal 25s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite alternate both;
+	        animation: shake-horizontal 25s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite alternate both;
+}
+
+.cloudRight{
+    position:absolute;
+    top:20vw;
+    right:5px;
+    width:26%;
+    -webkit-animation: shake-horizontal 25s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite alternate both;
+	        animation: shake-horizontal 25s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite alternate both;
+}
+.cloudTop{
+    position:absolute;
+    right:12vw;
+    width:15%;
     -webkit-animation: shake-horizontal 25s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite alternate both;
 	        animation: shake-horizontal 25s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite alternate both;
 }
