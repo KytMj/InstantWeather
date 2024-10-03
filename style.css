@@ -1,7 +1,21 @@
+/* https://cssgradient.io/gradient-backgrounds/*/
+
 main{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+body{
+    background-color: #8BC6EC;
+    background-image: linear-gradient(135deg, #96c3e0 0%, #555bd4 100%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+html,body{
+    height: 99%;
 }
 
 .ghost{
@@ -68,3 +82,4 @@ button:hover{
 input{
     font-size: 1vw;
 }
+
