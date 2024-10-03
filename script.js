@@ -16,7 +16,6 @@ document.querySelector('#postalCode').addEventListener('input', function (){
             while(select.firstChild){
                 select.removeChild(select.firstChild);
             }
-            console.log(data);
             for(let ville of data){
                 let option = new Option(ville.nom, ville.code);
                 select.appendChild(option);
@@ -25,15 +24,9 @@ document.querySelector('#postalCode').addEventListener('input', function (){
     }
 });
 
-select.childNodes.forEach(function(item){
-    console.log(item);
-})
+function weatherInformations(){
+    //let city = select.options[select.selectedIndex].text;    donne le nom de la commune
 
-
-document.querySelector('#validation').addEventListener('click', function (){
-    console.log(select)
-});
-
-function choice(){
-
+    let insee = select.value;   //donne la valeur insee de la commune sélectionnée
+    
 }
