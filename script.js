@@ -47,4 +47,8 @@ function weatherInformationsToday(){
 function newResearch(){
     document.getElementById("codeResearch").className = "";
     document.getElementById("viewInfos").className = "ghost";
+    document.querySelector('#postalCode').value = "";
+    while(select.firstChild){
+        select.removeChild(select.firstChild);
+    }
 }
