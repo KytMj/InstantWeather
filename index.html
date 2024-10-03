@@ -8,15 +8,17 @@
     </head>
     <body>
         <main>
-            <section class="info Box"> 
+            <img src="./cloud-3d-icon.png" class="cloudLeft" alt="nuage en 3D qui bouge">
+            <section class="info Box BoxTransition"> 
                 <h1> Instant Weather</h1> 
                 <p> Votre météo en un clic
                     où vous voulez</p>
             </section>
-            <img src="./cloud-3d-icon.png" class="cloudLeft" alt="nuage en 3D qui bouge">
+            
             <img src="./cloud-3d-icon.png" class="cloudRight" alt="nuage en 3D qui bouge">
             <img src="./cloud-3d-icon.png" class="cloudTop" alt="nuage en 3D qui bouge">
-            <section class="Box">
+            
+            <section class="weather BoxTransition">
                 <h2>Choisissez votre commune et la météo s'affichera !</h2>
                 <div id="codeResearch">
                     <form method="GET">
@@ -29,19 +31,19 @@
                 </div>
 
                 <div id="viewInfos" class="ghost">
-                    <div>
+                    <div class="weatherInfos">
                         <p class="formElement"> Température minimale : </p>
                         <p class="formElement" id="minimTemp"> </p>
                     </div>
-                    <div>
+                    <div class="weatherInfos">
                         <p class="formElement"> Température maximale : </p>
                         <p class="formElement" id="maxiTemp"> </p>
                     </div>
-                    <div>
+                    <div class="weatherInfos">
                         <p class="formElement"> Probabilité de pluie :  </p>
                         <p class="formElement" id="rainProba"> </p>
                     </div>
-                    <div>
+                    <div class="weatherInfos">
                         <p class="formElement"> Ensoleillement journalier : </p>
                         <p class="formElement" id="dailySunshine"> </p>
                     </div>
