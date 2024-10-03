@@ -7,8 +7,7 @@ main{
 }
 
 body{
-    background-color: #8BC6EC;
-    background-image: linear-gradient(135deg, #96c3e0 0%, #555bd4 100%);
+    background-image: linear-gradient(13deg, #f0d385 5%,#62b6b2 20%, #72b5e2 50%, #323794 100%);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -23,22 +22,31 @@ html,body{
 }
 
 .Box{
-    border : 0.1em black solid;
-    border-radius : 20px;
-    padding : 20px;
+    padding : 4vw;
     margin: 0.3em;
-    width : 33%;
+    border-radius: 1.5vw;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
     
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+
+    /* from https://polypane.app/css-3d-transform-examples/ */
+    transform: perspective(1000px) rotateY(0deg); 
+    transition: transform 1s ease 0s;
+    &:hover {
+        transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+    }
 }
 
 .info{
-    background-color: darkcyan;
-    color: aliceblue;
+    background-color: rgb(211, 223, 223);
+    color: rgb(38, 119, 190);
     font-size: 2vw;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .formElement{
