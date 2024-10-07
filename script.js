@@ -1,4 +1,5 @@
 let select = document.querySelector('#selectCommune');
+let imgWeather = document.getElementById("imgWeather");
 const myToken = 'df67b5d9a4ad5c4d7edc7cb5bfd546524b5c69c768c28b951e0da9199128b388';
 //https://api.meteo-concept.com/api/ephemeride/0?token=df67b5d9a4ad5c4d7edc7cb5bfd546524b5c69c768c28b951e0da9199128b388
 
@@ -46,6 +47,9 @@ function weatherInformationsToday(){
         document.getElementById("rr10").innerText = data.forecast[0].rr10;
         document.getElementById("wind10m").innerText = data.forecast[0].wind10m;
         document.getElementById("dirwind10m").innerText = data.forecast[0].dirwind10m;
+
+        console.log(data.forecast[0].weather)
+        changingWeather(data.forecast[0].weather);
     });
 }
 
@@ -55,7 +59,37 @@ function newResearch(){
     document.querySelector('#postalCode').value = "";
     document.getElementById("selectCommune").className = "selectCommune formElement ghost";
     document.getElementById("validation").className = "formElement ghost";
+    while(imgWeather.firstChild){
+        imgWeather.removeChild(imgWeather.firstChild);
+    }
     while(select.firstChild){
         select.removeChild(select.firstChild);
     }
+}
+
+function changingWeather(weather){
+    let imgName = "";
+
+    if(weather === 0){
+        imgName = "sunny.png"
+    }
+    else if(weather === 1){
+        imgName = "slightlyCloudy.png"
+    }
+    else if(weather >= 1 && weather <= 7){
+        imgName = "cloudy.png"
+    }
+    else if((weather >= 10 && weather <= 16) || (weather >= 30 && weather <= 48) || (weather >= 70 && weather <= 78) || (weather >= 210 && weather <= 212)){
+        imgName = "rainy.png"
+    }
+    else if((weather >= 20 && weather <= 22) || (weather >= 60 && weather <= 68) || (weather >= 220 && weather <= 235)){
+        imgName = "snowy.png"
+    }
+    else if(weather >= 100 && weather <= 142){
+        imgName = "stormy.png"
+    }
+
+    let img = document.createElement('img');
+    img.src = `./img/${imgName}`;
+    imgWeather.appendChild(img);
 }
