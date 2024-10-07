@@ -1,5 +1,8 @@
 let select = document.querySelector('#selectCommune');
 let imgWeather = document.getElementById("imgWeather");
+let checkboxes = document.querySelectorAll("ul input");
+let nbDays = document.querySelector("#nbDays");
+
 const myToken = 'df67b5d9a4ad5c4d7edc7cb5bfd546524b5c69c768c28b951e0da9199128b388';
 //https://api.meteo-concept.com/api/ephemeride/0?token=df67b5d9a4ad5c4d7edc7cb5bfd546524b5c69c768c28b951e0da9199128b388
 
@@ -51,10 +54,11 @@ function weatherInformationsToday(){
         document.getElementById("dirwind10mDisplay").innerText = data.forecast[0].dirwind10m;
 
         changingWeather(data.forecast[0].weather);
+
+        console.log(nbDays.value);
     });
     
     checkboxes.forEach(element => {
-        console.log(element.checked);
         if(element.checked == true){
             document.getElementById(element.id.substring(5)).className = "weatherInfos";
         }else{
@@ -84,28 +88,27 @@ function newResearch(){
 function changingWeather(weather){
     let imgName = "";
 
-    if(weather === 0){
-        imgName = "sunny.png"
-    }
-    else if(weather === 1){
-        imgName = "slightlyCloudy.png"
-    }
-    else if(weather >= 1 && weather <= 7){
-        imgName = "cloudy.png"
-    }
-    else if((weather >= 10 && weather <= 16) || (weather >= 30 && weather <= 48) || (weather >= 70 && weather <= 78) || (weather >= 210 && weather <= 212)){
-        imgName = "rainy.png"
-    }
-    else if((weather >= 20 && weather <= 22) || (weather >= 60 && weather <= 68) || (weather >= 220 && weather <= 235)){
-        imgName = "snowy.png"
-    }
-    else if(weather >= 100 && weather <= 142){
-        imgName = "stormy.png"
-    }
+    // if(weather === 0){
+    //     imgName = "sunny.png"
+    // }
+    // else if(weather === 1){
+    //     imgName = "slightlyCloudy.png"
+    // }
+    // else if(weather >= 1 && weather <= 7){
+    //     imgName = "cloudy.png"
+    // }
+    // else if((weather >= 10 && weather <= 16) || (weather >= 30 && weather <= 48) || (weather >= 70 && weather <= 78) || (weather >= 210 && weather <= 212)){
+    //     imgName = "rainy.png"
+    // }
+    // else if((weather >= 20 && weather <= 22) || (weather >= 60 && weather <= 68) || (weather >= 220 && weather <= 235)){
+    //     imgName = "snowy.png"
+    // }
+    // else if(weather >= 100 && weather <= 142){
+    //     imgName = "stormy.png"
+    // }
 
     let img = document.createElement('img');
+    img.className = "customWeatherIcon";
     img.src = `./img/${imgName}`;
     imgWeather.appendChild(img);
 }
-
-let checkboxes = document.querySelectorAll("ul input");
