@@ -41,6 +41,11 @@ function weatherInformationsToday(){
         document.getElementById("maxiTemp").innerText = data.forecast[0].tmax + "°C";
         document.getElementById("rainProba").innerText = data.forecast[0].probarain + "%";
         document.getElementById("dailySunshine").innerText = data.forecast[0].sun_hours + " heures";
+        document.getElementById("latitude").innerText = data.forecast[0].latitude;
+        document.getElementById("longitude").innerText = data.forecast[0].longitude;
+        document.getElementById("rr10").innerText = data.forecast[0].rr10;
+        document.getElementById("wind10m").innerText = data.forecast[0].wind10m;
+        document.getElementById("dirwind10m").innerText = data.forecast[0].dirwind10m;
     });
 }
 
