@@ -2,27 +2,41 @@
 /*https://graphiste.com/blog/animations-css-bordures/*/
 main{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-}
-
-body{
-    background-image: linear-gradient(13deg, #f0d385 5%,#62b6b2 20%, #72b5e2 50%, #323794 100%);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-html,body{
-    height: 98%;
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
 }
 
 .ghost{
     display: none;
 }
+
+
+
+
+/*-------------------------------------------------------*/
+/*---------------------Fond d'écran----------------------*/
+/*-------------------------------------------------------*/
+body{
+    background: linear-gradient(13deg, #f0d385 5%,#62b6b2 20%, #72b5e2 50%, #323794 100%) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; 
+    background-size: 100% 100%;
+}
+
+html,body{
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+
+
+/*-------------------------------------------------------*/
+/*--------------Boite Infos Principales------------------*/
+/*-------------------------------------------------------*/
 
 .Box{
     padding : 4vw;
@@ -34,18 +48,10 @@ html,body{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-
-    
-    
 }
 
 .BoxTransition{
-    /* from https://polypane.app/css-3d-transform-examples/ 
-    transform: perspective(1000px) rotateY(0deg) rotateX(0deg); 
-    transition: transform 1s ease 0s;
-    &:hover {
-        transform: perspective(1500px) rotateY(2deg) ;
-    }*/
+    /* from https://polypane.app/css-3d-transform-examples/ */
     transform:
         perspective(350vw)
         translate3d(0px, 0px, -250px)
@@ -56,18 +62,26 @@ html,body{
     }
 }
 
-.info{
+.weather{
+    display:relative;
     background-color: rgb(211, 223, 223);
     color: rgb(38, 119, 190);
-    font-size: 2vw;
+    font-size: 0.8vw;
+    padding-top:0px;
+    padding : 4vw;
+    border-radius: 1.5vw;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    margin-bottom:1%;
 }
 
-.info h2{
-    font-size: 1.5vw;
+/*-------------------Elements dans la boite d'infos-------------------------*/
+.customWeatherIcon{
+    width:100px;
+    height:100px;
 }
 
 .formElement{
-    margin : 0.45em;
+    margin : 0.2em;
 }
 
 form{
@@ -75,7 +89,7 @@ form{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    font-size: 1.5vw;
+    font-size: 1vw;
 }
 
 .selectCommune{
@@ -84,30 +98,69 @@ form{
     width: 20em;
 }
 
-button{
-    width : 7em;
-    height : 2em;
-    background-color:green;
-    color : white;
-    border-radius: 0.5em;
-    box-shadow: 2px 2px 2px black;
-
-    font-size: 0.75em;
-    font-display: center;
-
-}
-
-button:hover{
-    background-color: white;
-    color : black;
-    box-shadow: none;
-    margin: 7px 3px 3px 7px;
-}
-
 input{
     font-size: 1vw;
 }
 
+/*-------------- Informations Principales dans la boite ---------------*/
+.weatherInfos{
+    display:flex;
+    flex-direction: row;
+    background-color: rgb(190, 190, 190);
+    margin:2%;
+    padding-left:2vw;
+    padding-right:2vw;
+    font-size: 1vw;
+}
+
+
+/*-------------------Button-----------------*/
+button{
+    width : 50%;
+    padding:0.3vw;
+    background-color:rgb(91, 167, 211);
+    color : white;
+    border-radius: 0.5em;
+    box-shadow: 2px 2px 2px rgb(13, 93, 117);
+    font-size: 0.8 vw;
+    font-display: center;
+}
+button:hover{
+    background-color: rgb(44, 135, 172);
+    color : rgb(255, 255, 255);
+    box-shadow: none;
+}
+/*------------------------------------------*/
+
+
+/*-------------------------------------------------------*/
+/*-------------------------Titre-------------------------*/
+/*-------------------------------------------------------*/
+.Title{
+    padding : 4vw;
+    margin: 3em;
+    margin-left:5vw;
+    color:white;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.Title h1{
+    font-size: 3vw;
+}
+
+
+.Title p{
+    font-size: 1.5vw;
+}
+
+
+/*-------------------------------------------------------*/
+/*--------------------Nuages Volants---------------------*/
+/*-------------------------------------------------------*/
 .cloudLeft{
     position:absolute;
     top:0px;
@@ -131,32 +184,6 @@ input{
     width:15%;
     -webkit-animation: shake-horizontal 25s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite alternate both;
 	        animation: shake-horizontal 25s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite alternate both;
-}
-
-.weatherInfos{
-    display:flex;
-    flex-direction: row;
-    background-color: white;
-    margin:10%;
-    padding-left:4vw;
-    padding-right:4vw;
-    font-size: 1.2vw;
-}
-
-.weather{
-    display:relative;
-    background-color: rgb(211, 223, 223);
-    color: rgb(38, 119, 190);
-    font-size: 0.8vw;
-    padding-top:0px;
-    padding : 4vw;
-    border-radius: 1.5vw;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
-}
-
-.customWeatherIcon{
-    width:100px;
-    height:100px;
 }
 
 /* ----------------------------------------------
