@@ -59,7 +59,11 @@ function weatherInformationsToday(){
         console.log(nbDays.value);
     });
     
-    checkboxes.forEach(element => {
+    checkboxes.forEach(element => { //displays the selected options / hides them if not
+
+        // element.id.substring(5) turns the checkbox id to the div id it corresponds
+        // check + element name for the checkboxes
+        // element name for the div
         if(element.checked == true){
             document.getElementById(element.id.substring(5)).className = "weatherInfos";
         }else{
@@ -80,8 +84,8 @@ function newResearch(){
     while(select.firstChild){
         select.removeChild(select.firstChild);
     }
-    checkboxes.forEach(element => {
-        element.checked = true;
+    checkboxes.forEach(element => { // puts all the checkboxes back to selected
+        element.checked = true;  
     });
 }
 
@@ -123,4 +127,9 @@ nbDaysNumber.addEventListener("input", (e) => { //prevents user to put manually 
         nbDaysNumber.value = 1;
         nbDays.value = 1;
     }
+});
+
+nbDaysNumber.addEventListener("click", (e) =>{ // when the user clicks on number input it selects everything
+    console.log("oui");
+    nbDaysNumber.select();
 });
