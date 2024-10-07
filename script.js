@@ -22,6 +22,8 @@ document.querySelector('#postalCode').addEventListener('input', function (){
                 select.appendChild(option);
             }      
         });
+
+        
     }
 });
 
@@ -42,14 +44,22 @@ function weatherInformationsToday(){
         document.getElementById("maxiTemp").innerText = data.forecast[0].tmax + "°C";
         document.getElementById("rainProba").innerText = data.forecast[0].probarain + "%";
         document.getElementById("dailySunshine").innerText = data.forecast[0].sun_hours + " heures";
-        document.getElementById("latitude").innerText = data.forecast[0].latitude;
-        document.getElementById("longitude").innerText = data.forecast[0].longitude;
-        document.getElementById("rr10").innerText = data.forecast[0].rr10;
-        document.getElementById("wind10m").innerText = data.forecast[0].wind10m;
-        document.getElementById("dirwind10m").innerText = data.forecast[0].dirwind10m;
+        document.getElementById("latitudeDisplay").innerText = data.forecast[0].latitude;
+        document.getElementById("longitudeDisplay").innerText = data.forecast[0].longitude;
+        document.getElementById("rr10Display").innerText = data.forecast[0].rr10;
+        document.getElementById("wind10mDisplay").innerText = data.forecast[0].wind10m;
+        document.getElementById("dirwind10mDisplay").innerText = data.forecast[0].dirwind10m;
 
-        console.log(data.forecast[0].weather)
         changingWeather(data.forecast[0].weather);
+    });
+    
+    checkboxes.forEach(element => {
+        console.log(element.checked);
+        if(element.checked == true){
+            document.getElementById(element.id.substring(5)).className = "weatherInfos";
+        }else{
+            document.getElementById(element.id.substring(5)).className = "ghost";
+        }
     });
 }
 
@@ -65,7 +75,11 @@ function newResearch(){
     while(select.firstChild){
         select.removeChild(select.firstChild);
     }
+    checkboxes.forEach(element => {
+        element.checked = true;
+    });
 }
+
 
 function changingWeather(weather){
     let imgName = "";
@@ -93,3 +107,5 @@ function changingWeather(weather){
     img.src = `./img/${imgName}`;
     imgWeather.appendChild(img);
 }
+
+let checkboxes = document.querySelectorAll("ul input");

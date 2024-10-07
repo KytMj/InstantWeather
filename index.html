@@ -1,99 +1,102 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./style.css">
-        <title>Instant Weather</title>
-    </head>
-    <body>
-        <main>
-            <img src="./img/cloud-3d-icon.png" class="cloudLeft" alt="nuage en 3D qui bouge">
-            <section class="info Box BoxTransition"> 
-                <h1> Instant Weather</h1> 
-                <p> Votre météo en un clic
-                    où vous voulez</p>
-            </section>
-            
-            <img src="./img/cloud-3d-icon.png" class="cloudRight" alt="nuage en 3D qui bouge">
-            <img src="./img/cloud-3d-icon.png" class="cloudTop" alt="nuage en 3D qui bouge">
-            
-            <section class="weather BoxTransition">
-                <h2>Choisissez votre commune et la météo s'affichera !</h2>
-                <div id="codeResearch">
-                    <form method="GET">
-                        <div>
-                            <label>
-                                <input type ="checkbox" id="checkLatitude">
-                                latitude </label>
-                            <label>
-                                <input type ="checkbox" id="checkLongitude">
-                                longitude 
-                            </label>
-                            <label>
-                                <input type ="checkbox" id="checkrr10">
-                                précipitations
-                            </label>
-                            <label>
-                                <input type ="checkbox" id="checkwind10m">
-                                vitesse du vent
-                            </label>
-                            <label>
-                                <input type ="checkbox" id="checkdirwind10m">
-                                direction du vent
-                            </label>
-                        </div>
-                        <label class="formElement"> Code postal :</label>
-                        <input type="text" id="postalCode" name="postalCode" maxlength="5" class="formElement">
-                        <select id="selectCommune" class="selectCommune formElement ghost"> </select>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Instant Weather</title>
+</head>
 
-                    </form>
+<body>
+    <main>
+        <img src="./img/cloud-3d-icon.png" class="cloudLeft" alt="nuage en 3D qui bouge">
+        <section class="info Box BoxTransition">
+            <h1> Instant Weather</h1>
+            <p> Votre météo en un clic
+                où vous voulez</p>
+        </section>
 
-                    <button class="formElement ghost" id="validation" onclick="weatherInformationsToday()">Valider</button>
+        <img src="./img/cloud-3d-icon.png" class="cloudRight" alt="nuage en 3D qui bouge">
+        <img src="./img/cloud-3d-icon.png" class="cloudTop" alt="nuage en 3D qui bouge">
+
+        <section class="weather BoxTransition">
+            <h2>Choisissez votre commune et la météo s'affichera !</h2>
+            <div id="codeResearch">
+                <form method="GET">
+                    <ul>
+                        <li>
+                            <input type="checkbox" id="checklatitude" checked>
+                            <label for="checklatitude">latitude</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="checklongitude" checked>
+                            <label for="checklongitude">longitude</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="checkrr10" checked>      
+                            <label for="checkrr10">précipitations</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="checkwind10m" checked>
+                            <label for="checkwind10m">vitesse du vent</label> 
+                        </li>
+                        <li>
+                            <input type="checkbox" id="checkdirwind10m" checked>
+                            <label for="checkdirwind10m">direction du vent</label>
+                        </li>
+                    </ul>
+                    <label class="formElement"> Code postal :</label>
+                    <input type="text" id="postalCode" name="postalCode" maxlength="5" class="formElement">
+                    <select id="selectCommune" class="selectCommune formElement ghost"> </select>
+
+                </form>
+
+                <button class="formElement ghost" id="validation" onclick="weatherInformationsToday()">Valider</button>
+            </div>
+
+            <div id="viewInfos" class="ghost">
+                <div id="imgWeather"></div>
+                <div class="weatherInfos">
+                    <p class="formElement"> Température minimale : </p>
+                    <p class="formElement" id="minimTemp"> </p>
                 </div>
-
-                <div id="viewInfos" class="ghost">
-                    <div id="imgWeather"></div>
-                    <div class="weatherInfos">
-                        <p class="formElement"> Température minimale : </p>
-                        <p class="formElement" id="minimTemp"> </p>
-                    </div>
-                    <div class="weatherInfos">
-                        <p class="formElement"> Température maximale : </p>
-                        <p class="formElement" id="maxiTemp"> </p>
-                    </div>
-                    <div class="weatherInfos">
-                        <p class="formElement"> Probabilité de pluie :  </p>
-                        <p class="formElement" id="rainProba"> </p>
-                    </div>
-                    <div class="weatherInfos">
-                        <p class="formElement"> Ensoleillement journalier : </p>
-                        <p class="formElement" id="dailySunshine"> </p>
-                    </div>
-                    <div class="weatherInfos">
-                        <p class="formElement"> Latitude : </p>
-                        <p class="formElement" id="latitude"> </p>
-                    </div>
-                    <div class="weatherInfos">
-                        <p class="formElement"> Longitude : </p>
-                        <p class="formElement" id="longitude"> </p>
-                    </div>
-                    <div class="weatherInfos">
-                        <p class="formElement"> Cumul de pluie (mm) : </p>
-                        <p class="formElement" id="rr10"> </p>
-                    </div>
-                    <div class="weatherInfos">
-                        <p class="formElement"> Vent moyen à 10m (km/h) : </p>
-                        <p class="formElement" id="wind10m"> </p>
-                    </div>
-                    <div class="weatherInfos">
-                        <p class="formElement"> Direction du vent (°) : </p>
-                        <p class="formElement" id="dirwind10m"> </p>
-                    </div>
-                    <button id="newResearch" onclick="newResearch()">Nouvelle recherche</button>
+                <div class="weatherInfos">
+                    <p class="formElement"> Température maximale : </p>
+                    <p class="formElement" id="maxiTemp"> </p>
                 </div>
-            </section>
-        </main>
-        <script src="./script.js"></script>
-    </body>
+                <div class="weatherInfos">
+                    <p class="formElement"> Probabilité de pluie : </p>
+                    <p class="formElement" id="rainProba"> </p>
+                </div>
+                <div class="weatherInfos">
+                    <p class="formElement"> Ensoleillement journalier : </p>
+                    <p class="formElement" id="dailySunshine"> </p>
+                </div>
+                <div class="weatherInfos" id="latitude">
+                    <p class="formElement"> Latitude : </p>
+                    <p class="formElement" id = "latitudeDisplay"> </p>
+                </div>
+                <div class="weatherInfos" id="longitude">
+                    <p class="formElement"> Longitude : </p>
+                    <p class="formElement" id = "longitudeDisplay"> </p>
+                </div>
+                <div class="weatherInfos" id="rr10">
+                    <p class="formElement"> Cumul de pluie (mm) : </p>
+                    <p class="formElement" id="rr10Display"> </p>
+                </div>
+                <div class="weatherInfos" id="wind10m">
+                    <p class="formElement"> Vent moyen à 10m (km/h) : </p>
+                    <p class="formElement" id="wind10mDisplay"> </p>
+                </div>
+                <div class="weatherInfos" id="dirwind10m">
+                    <p class="formElement"> Direction du vent (°) : </p>
+                    <p class="formElement" id="dirwind10mDisplay"> </p>
+                </div>
+                <button id="newResearch" onclick="newResearch()">Nouvelle recherche</button>
+            </div>
+        </section>
+    </main>
+    <script src="./script.js"></script>
+</body>
+
 </html>
