@@ -22,9 +22,31 @@
                 <h2>Choisissez votre commune et la météo s'affichera !</h2>
                 <div id="codeResearch">
                     <form method="GET">
+                        <div>
+                            <label>
+                                <input type ="checkbox" id="checkLatitude">
+                                latitude </label>
+                            <label>
+                                <input type ="checkbox" id="checkLongitude">
+                                longitude 
+                            </label>
+                            <label>
+                                <input type ="checkbox" id="checkrr10">
+                                précipitations
+                            </label>
+                            <label>
+                                <input type ="checkbox" id="checkwind10m">
+                                vitesse du vent
+                            </label>
+                            <label>
+                                <input type ="checkbox" id="checkdirwind10m">
+                                direction du vent
+                            </label>
+                        </div>
                         <label class="formElement"> Code postal :</label>
                         <input type="text" id="postalCode" name="postalCode" maxlength="5" class="formElement">
                         <select id="selectCommune" class="selectCommune formElement ghost"> </select>
+
                     </form>
 
                     <button class="formElement ghost" id="validation" onclick="weatherInformationsToday()">Valider</button>
