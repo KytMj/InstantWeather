@@ -2,6 +2,7 @@ let select = document.querySelector('#selectCommune');
 let imgWeather = document.getElementById("imgWeather");
 let checkboxes = document.querySelectorAll("ul input");
 let nbDays = document.querySelector("#nbDays");
+let nbDaysNumber = document.getElementById("nbDaysNumber");
 
 const myToken = 'df67b5d9a4ad5c4d7edc7cb5bfd546524b5c69c768c28b951e0da9199128b388';
 //https://api.meteo-concept.com/api/ephemeride/0?token=df67b5d9a4ad5c4d7edc7cb5bfd546524b5c69c768c28b951e0da9199128b388
@@ -58,7 +59,11 @@ function weatherInformationsToday(){
         console.log(nbDays.value);
     });
     
-    checkboxes.forEach(element => {
+    checkboxes.forEach(element => { //displays the selected options / hides them if not
+
+        // element.id.substring(5) turns the checkbox id to the div id it corresponds
+        // check + element name for the checkboxes
+        // element name for the div
         if(element.checked == true){
             document.getElementById(element.id.substring(5)).className = "weatherInfos";
         }else{
@@ -79,8 +84,8 @@ function newResearch(){
     while(select.firstChild){
         select.removeChild(select.firstChild);
     }
-    checkboxes.forEach(element => {
-        element.checked = true;
+    checkboxes.forEach(element => { // puts all the checkboxes back to selected
+        element.checked = true;  
     });
 }
 
@@ -112,3 +117,19 @@ function changingWeather(weather){
     img.src = `./img/${imgName}`;
     imgWeather.appendChild(img);
 }
+
+nbDaysNumber.addEventListener("input", (e) => { //prevents user to put manually forbidden values
+    if(nbDaysNumber.value > 7){
+        nbDaysNumber.value = 7;
+        nbDays.value = 7;
+    }
+    if(nbDaysNumber.value < 1){
+        nbDaysNumber.value = 1;
+        nbDays.value = 1;
+    }
+});
+
+nbDaysNumber.addEventListener("click", (e) =>{ // when the user clicks on number input it selects everything
+    console.log("oui");
+    nbDaysNumber.select();
+});
