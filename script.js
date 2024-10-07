@@ -2,6 +2,7 @@ let select = document.querySelector('#selectCommune');
 let imgWeather = document.getElementById("imgWeather");
 let checkboxes = document.querySelectorAll("ul input");
 let nbDays = document.querySelector("#nbDays");
+let forecast = document.querySelector("#forecast");
 
 const myToken = 'df67b5d9a4ad5c4d7edc7cb5bfd546524b5c69c768c28b951e0da9199128b388';
 //https://api.meteo-concept.com/api/ephemeride/0?token=df67b5d9a4ad5c4d7edc7cb5bfd546524b5c69c768c28b951e0da9199128b388
@@ -25,8 +26,6 @@ document.querySelector('#postalCode').addEventListener('input', function (){
                 select.appendChild(option);
             }      
         });
-
-        
     }
 });
 
@@ -43,10 +42,10 @@ function weatherInformationsToday(){
         return response.json();
     }
     ).then((data) => {
-        document.getElementById("minimTemp").innerText = data.forecast[0].tmin + "°C";
-        document.getElementById("maxiTemp").innerText = data.forecast[0].tmax + "°C";
-        document.getElementById("rainProba").innerText = data.forecast[0].probarain + "%";
-        document.getElementById("dailySunshine").innerText = data.forecast[0].sun_hours + " heures";
+        document.getElementById("minimTempDisplay").innerText = data.forecast[0].tmin + "°C";
+        document.getElementById("maxiTempDisplay").innerText = data.forecast[0].tmax + "°C";
+        document.getElementById("rainProbaDisplay").innerText = data.forecast[0].probarain + "%";
+        document.getElementById("dailySunshineDisplay").innerText = data.forecast[0].sun_hours + " heures";
         document.getElementById("latitudeDisplay").innerText = data.forecast[0].latitude;
         document.getElementById("longitudeDisplay").innerText = data.forecast[0].longitude;
         document.getElementById("rr10Display").innerText = data.forecast[0].rr10;
@@ -55,7 +54,9 @@ function weatherInformationsToday(){
 
         changingWeather(data.forecast[0].weather);
 
-        console.log(nbDays.value);
+        if(nbDays.value > 1){
+            forecastDays(nbDays.value, data);
+        }
     });
     
     checkboxes.forEach(element => {
@@ -78,6 +79,9 @@ function newResearch(){
     }
     while(select.firstChild){
         select.removeChild(select.firstChild);
+    }
+    while(forecast.firstChild){
+        forecast.removeChild(forecast.firstChild);
     }
     checkboxes.forEach(element => {
         element.checked = true;
@@ -111,4 +115,30 @@ function changingWeather(weather){
     img.className = "customWeatherIcon";
     img.src = `./img/${imgName}`;
     imgWeather.appendChild(img);
+}
+
+function forecastDays(numberOfDays, data){
+    let id = ["minimTemp", "maxiTemp", "rainProba", "dailySunshine", "latitude", "longitude", "rr10", "wind10m", "dirwind10m"];
+
+    for (let i = 1; i < numberOfDays; i++) {
+        for (let j = 0; j < id.length; j++) {
+            let weatherInfosForecast = document.createElement('div');
+            let paragraph = document.createElement('p');
+            paragraph.id = id[j] + `Display${i}`;
+            weatherInfosForecast.appendChild(paragraph);
+        }
+
+        document.getElementById("minimTempDisplay"+`${i}`).innerText = "Température minimale : " + data.forecast[0].tmin + "°C";
+        document.getElementById("maxiTempDisplay"+`${i}`).innerText = "Température maximale : " + data.forecast[0].tmax + "°C";
+        document.getElementById("rainProbaDisplay"+`${i}`).innerText = "Probabilité de pluie : " + data.forecast[0].probarain + "%";
+        document.getElementById("dailySunshineDisplay"+`${i}`).innerText = "Ensoleillement journalier : " + data.forecast[0].sun_hours + " heures";
+        document.getElementById("latitudeDisplay"+`${i}`).innerText = "Latitude : " +  data.forecast[0].latitude;
+        document.getElementById("longitudeDisplay"+`${i}`).innerText = data.forecast[0].longitude;
+        document.getElementById("rr10Display"+`${i}`).innerText = data.forecast[0].rr10;
+        document.getElementById("wind10mDisplay"+`${i}`).innerText = data.forecast[0].wind10m;
+        document.getElementById("dirwind10mDisplay"+`${i}`).innerText = data.forecast[0].dirwind10m;
+
+    
+        forecast.appendChild(option);  
+    }
 }
