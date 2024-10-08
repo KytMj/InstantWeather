@@ -64,14 +64,18 @@ html,body{
 
 .weather{
     display:relative;
-    background-color: rgb(211, 223, 223);
+    background-color: rgb(206, 207, 206);
     color: rgb(38, 119, 190);
     font-size: 0.8vw;
     padding-top:0px;
     padding : 4vw;
     border-radius: 1.5vw;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
-    margin-bottom:1%;
+    margin-top:10%;
+}
+
+.weather h2{
+    font-size: 1.5vw;;
 }
 
 /*-------------------Elements dans la boite d'infos-------------------------*/
@@ -83,6 +87,7 @@ html,body{
 .formElement{
     margin : 0.2em;
 }
+
 
 form{
     display: flex;
@@ -103,10 +108,10 @@ input{
 }
 
 /*-------------- Informations Principales dans la boite ---------------*/
+/*-----------------Après la recherche---------------------------------*/
 .weatherInfos{
     display:flex;
     flex-direction: row;
-    background-color: rgb(190, 190, 190);
     margin:2%;
     padding-left:2vw;
     padding-right:2vw;
@@ -124,6 +129,7 @@ button{
     box-shadow: 2px 2px 2px rgb(13, 93, 117);
     font-size: 0.8 vw;
     font-display: center;
+    margin-left:25%;
 }
 button:hover{
     background-color: rgb(44, 135, 172);
@@ -137,24 +143,22 @@ button:hover{
 /*-------------------------Titre-------------------------*/
 /*-------------------------------------------------------*/
 .Title{
-    padding : 4vw;
-    margin: 3em;
-    margin-left:5vw;
+    margin: 13% 10% 0 10%;
     color:white;
     
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center;
 }
 
 .Title h1{
-    font-size: 3vw;
+    margin-bottom:0;
+    font-size: 3.5vw;
 }
 
 
 .Title p{
-    font-size: 1.5vw;
+    font-size: 1.3vw;
 }
 
 

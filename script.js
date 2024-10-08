@@ -12,7 +12,7 @@ document.querySelector('#postalCode').addEventListener('input', function (){
         let url = `https://geo.api.gouv.fr/communes?codePostal=${this.value}&type=commune-actuelle&fields=nom,code,codesPostaux&format=json&geometry=centre`;
     
         document.getElementById("selectCommune").className = "selectCommune formElement";
-        document.getElementById("validation").className = "formElement";
+        document.getElementById("validation").className = "";
 
         fetch(url).then((response) => {
             return response.json();
