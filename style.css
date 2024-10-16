@@ -57,13 +57,13 @@ html,body{
         translate3d(0px, 0px, -250px)
         scale(1, 1);
     transition: 1s ease-in-out transform;
-    &:hover {
-        transform: translate3d(0px, 0px, -250px);
-    }
+}
+
+.BoxTransition:hover {
+    transform: translate3d(0px, 0px, -250px);
 }
 
 .weather{
-    display:relative;
     background-color: rgb(206, 207, 206);
     color: rgb(38, 119, 190);
     font-size: 0.8vw;
@@ -131,8 +131,6 @@ button{
     color : white;
     border-radius: 0.5em;
     box-shadow: 2px 2px 2px rgb(13, 93, 117);
-    font-size: 0.8 vw;
-    font-display: center;
     margin-left:25%;
 }
 button:hover{
