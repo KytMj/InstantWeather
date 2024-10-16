@@ -19,35 +19,35 @@
 
         <section class="weather BoxTransition">
             <h2>Choisissez votre commune et la météo s'affichera !</h2>
-            <div id="codeResearch">
+            <div id="codeResearch" class="codeResearch">
                 <form method="GET">
                     <label class="formElement"> Code postal :</label>
                     <input type="text" id="postalCode" name="postalCode" maxlength="5" class="formElement">
                     <select id="selectCommune" class="selectCommune formElement ghost"> </select>
                     
-                    <label for="nbDays">nombres de jours </label>
+                    <label for="nbDays"> Nombre de jours :</label>
                     <input type="range" value="1" name="amountRange" min="1" max="7" oninput="this.form.amountInput.value=this.value" id="nbDays"/>
                     <input type="number" value = "1" name="amountInput" min="1" max="7" oninput="this.form.amountRange.value=this.value" id="nbDaysNumber"/> <!-- got this from stackoverflow (3rd proposition) : https://stackoverflow.com/questions/10004723/html5-input-type-range-show-range-value-->
                     <ul>
                         <li>
                             <input type="checkbox" id="checklatitude" checked>
-                            <label for="checklatitude">latitude</label>
+                            <label for="checklatitude"> Latitude</label>
                         </li>
                         <li>
                             <input type="checkbox" id="checklongitude" checked>
-                            <label for="checklongitude">longitude</label>
+                            <label for="checklongitude"> Longitude</label>
                         </li>
                         <li>
                             <input type="checkbox" id="checkrr10" checked>      
-                            <label for="checkrr10">précipitations</label>
+                            <label for="checkrr10"> Précipitations</label>
                         </li>
                         <li>
                             <input type="checkbox" id="checkwind10m" checked>
-                            <label for="checkwind10m">vitesse du vent</label> 
+                            <label for="checkwind10m"> Vitesse du vent</label> 
                         </li>
                         <li>
                             <input type="checkbox" id="checkdirwind10m" checked>
-                            <label for="checkdirwind10m">direction du vent</label>
+                            <label for="checkdirwind10m"> Direction du vent</label>
                         </li>
                     </ul>
                 </form>

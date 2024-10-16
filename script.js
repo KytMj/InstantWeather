@@ -93,24 +93,24 @@ function newResearch(){
 function changingWeather(weather){
     let imgName = "";
 
-    // if(weather === 0){
-    //     imgName = "sunny.png"
-    // }
-    // else if(weather === 1){
-    //     imgName = "slightlyCloudy.png"
-    // }
-    // else if(weather >= 1 && weather <= 7){
-    //     imgName = "cloudy.png"
-    // }
-    // else if((weather >= 10 && weather <= 16) || (weather >= 30 && weather <= 48) || (weather >= 70 && weather <= 78) || (weather >= 210 && weather <= 212)){
-    //     imgName = "rainy.png"
-    // }
-    // else if((weather >= 20 && weather <= 22) || (weather >= 60 && weather <= 68) || (weather >= 220 && weather <= 235)){
-    //     imgName = "snowy.png"
-    // }
-    // else if(weather >= 100 && weather <= 142){
-    //     imgName = "stormy.png"
-    // }
+    if(weather === 0){
+        imgName = "sunny.png"
+    }
+    else if(weather === 1){
+        imgName = "slightlyCloudy.png"
+    }
+    else if(weather >= 1 && weather <= 7){
+        imgName = "cloudy.png"
+    }
+    else if((weather >= 10 && weather <= 16) || (weather >= 30 && weather <= 48) || (weather >= 70 && weather <= 78) || (weather >= 210 && weather <= 212)){
+        imgName = "rainy.png"
+    }
+    else if((weather >= 20 && weather <= 22) || (weather >= 60 && weather <= 68) || (weather >= 220 && weather <= 235)){
+        imgName = "snowy.png"
+    }
+    else if(weather >= 100 && weather <= 142){
+        imgName = "stormy.png"
+    }
 
     let img = document.createElement('img');
     img.className = "customWeatherIcon";
