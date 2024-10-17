@@ -38,6 +38,7 @@ function weatherInformationsToday(){
 
     document.getElementById("codeResearch").className = "ghost";
     document.getElementById("viewInfos").className = "";
+    document.getElementById("title").className = "ghost";
 
     fetch(url).then((response) => {
         return response.json();
@@ -79,6 +80,7 @@ function newResearch(){
     document.querySelector('#postalCode').value = "";
     document.getElementById("selectCommune").className = "selectCommune formElement ghost";
     document.getElementById("validation").className = "formElement ghost";
+    document.getElementById("title").className = "";
     while(imgWeather.firstChild){
         imgWeather.removeChild(imgWeather.firstChild);
     }
