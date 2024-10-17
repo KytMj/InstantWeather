@@ -9,8 +9,8 @@
 
 <body>
     <main>
-        <img src="./img/cloud-3d-icon.png" class="cloudRight" alt="nuage en 3D qui bouge">
-        <img src="./img/cloud-3d-icon.png" class="cloudTop" alt="nuage en 3D qui bouge">
+        <!--<img src="./img/cloud-3d-icon.png" class="cloudRight" alt="nuage en 3D qui bouge">
+        <img src="./img/cloud-3d-icon.png" class="cloudTop" alt="nuage en 3D qui bouge"> --> 
         <section class="Title">
             <h1> Instant Weather</h1>
             <p> Votre météo en un clic,
@@ -59,39 +59,39 @@
                 <div id="imgWeather"></div>
                 <div class="weatherInfos minimTemp">
                     <p class="formElement"> Température minimale : </p>
-                    <p class="formElement minimTempDisplay"> </p>
+                    <p class="formElement minimTempDisplay" id="minimTempDisplay"> </p>
                 </div>
                 <div class="weatherInfos maxiTemp">
                     <p class="formElement"> Température maximale : </p>
-                    <p class="formElement maxiTempDisplay"> </p>
+                    <p class="formElement maxiTempDisplay" id="maxiTempDisplay"> </p>
                 </div>
                 <div class="weatherInfos rainProba">
                     <p class="formElement"> Probabilité de pluie : </p>
-                    <p class="formElement rainProbaDisplay"> </p>
+                    <p class="formElement rainProbaDisplay" id="rainProbaDisplay"> </p>
                 </div>
                 <div class="weatherInfos dailySunshine">
                     <p class="formElement"> Ensoleillement journalier : </p>
-                    <p class="formElement dailySunshineDisplay"> </p>
+                    <p class="formElement dailySunshineDisplay" id="dailySunshineDisplay"> </p>
                 </div>
-                <div class="weatherInfos latitude">
-                    <p class="formElement"> Latitude : </p>
-                    <p class="formElement latitudeDisplay"> </p>
+                <div class="weatherInfos latitude" id="latitude">
+                    <p class="formElement" > Latitude : </p>
+                    <p class="formElement latitudeDisplay" id="latitudeDisplay"> </p>
                 </div>
-                <div class="weatherInfos longitude">
+                <div class="weatherInfos longitude" id="longitude">
                     <p class="formElement"> Longitude : </p>
-                    <p class="formElement longitudeDisplay"> </p>
+                    <p class="formElement longitudeDisplay" id="longitudeDisplay"> </p>
                 </div>
-                <div class="weatherInfos rr10">
+                <div class="weatherInfos rr10" id="rr10">
                     <p class="formElement"> Cumul de pluie (mm) : </p>
-                    <p class="formElement rr10Display"> </p>
+                    <p class="formElement rr10Display" id="rr10Display"> </p>
                 </div>
-                <div class="weatherInfos wind10m">
+                <div class="weatherInfos wind10m" id="wind10m">
                     <p class="formElement"> Vent moyen à 10m (km/h) : </p>
-                    <p class="formElement wind10mDisplay"> </p>
+                    <p class="formElement wind10mDisplay" id="wind10mDisplay"> </p>
                 </div>
-                <div class="weatherInfos dirwind10m">
+                <div class="weatherInfos dirwind10m" id="dirwind10m">
                     <p class="formElement"> Direction du vent (°) : </p>
-                    <p class="formElement dirwind10mDisplay"> </p>
+                    <p class="formElement dirwind10mDisplay" id="dirwind10mDisplay"> </p>
                 </div>
                 <button id="newResearch" onclick="newResearch()">Nouvelle recherche</button>
             </div>
