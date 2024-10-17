@@ -44,20 +44,22 @@ function weatherInformationsToday(){
         return response.json();
     }
     ).then((data) => {
-        document.getElementById("minimTempDisplay").innerText = data.forecast[0].tmin + "°C";
-        document.getElementById("maxiTempDisplay").innerText = data.forecast[0].tmax + "°C";
-        document.getElementById("rainProbaDisplay").innerText = data.forecast[0].probarain + "%";
-        document.getElementById("dailySunshineDisplay").innerText = data.forecast[0].sun_hours + " heures";
-        document.getElementById("latitudeDisplay").innerText = data.forecast[0].latitude;
-        document.getElementById("longitudeDisplay").innerText = data.forecast[0].longitude;
-        document.getElementById("rr10Display").innerText = data.forecast[0].rr10;
-        document.getElementById("wind10mDisplay").innerText = data.forecast[0].wind10m;
-        document.getElementById("dirwind10mDisplay").innerText = data.forecast[0].dirwind10m;
+        document.querySelector(".minimTempDisplay").innerText = data.forecast[0].tmin + "°C";
+        document.querySelector(".maxiTempDisplay").innerText = data.forecast[0].tmax + "°C";
+        document.querySelector(".rainProbaDisplay").innerText = data.forecast[0].probarain + "%";
+        document.querySelector(".dailySunshineDisplay").innerText = data.forecast[0].sun_hours + " heure(s)";
+        document.querySelector(".latitudeDisplay").innerText = data.forecast[0].latitude;
+        document.querySelector(".longitudeDisplay").innerText = data.forecast[0].longitude;
+        document.querySelector(".rr10Display").innerText = data.forecast[0].rr10;
+        document.querySelector(".wind10mDisplay").innerText = data.forecast[0].wind10m;
+        document.querySelector(".dirwind10mDisplay").innerText = data.forecast[0].dirwind10m;
 
         changingWeather(data.forecast[0].weather);
 
         if(nbDays.value > 1){
             forecastDays(nbDays.value, data);
+            document.getElementById("forecast").className = "forecast";
+
         }
     });
     
@@ -67,9 +69,9 @@ function weatherInformationsToday(){
         // check + element name for the checkboxes
         // element name for the div
         if(element.checked == true){
-            document.getElementById(element.id.substring(5)).className = "weatherInfos";
+            document.querySelectorAll("."+element.id.substring(5)).className = `weatherInfos ${element.id.substring(5)}`;
         }else{
-            document.getElementById(element.id.substring(5)).className = "ghost";
+            document.querySelectorAll("."+element.id.substring(5)).className = "ghost";
         }
     });
 }
@@ -130,26 +132,29 @@ function forecastDays(numberOfDays, data){
 
     for (let i = 1; i < numberOfDays; i++) {
         let weatherInfosForecast = document.createElement('div');
-        weatherInfosForecast.className = "weatherInfos";
+        weatherInfosForecast.className = "viewInfos";
 
         for (let j = 0; j < id.length; j++) {
+            let infosBox = document.createElement('div');
+            infosBox.className = "weatherInfos " + id[j];
+
             let paragraph = document.createElement('p');
-            paragraph.id = id[j] + `Display${i}`;
-            paragraph.className = "formElement";
-            weatherInfosForecast.appendChild(paragraph);
+            paragraph.className = "formElement " + id[j] + "Display" + i;
+
+            infosBox.appendChild(paragraph);
+            weatherInfosForecast.appendChild(infosBox);
         }
+        forecast.appendChild(weatherInfosForecast);  
 
-        document.getElementById(`minimTempDisplay${i}`).innerText = "Température minimale : " + data.forecast[i].tmin + "°C";
-        document.getElementById(`maxiTempDisplay${i}`).innerText = "Température maximale : " + data.forecast[i].tmax + "°C";
-        document.getElementById(`rainProbaDisplay${i}`).innerText = "Probabilité de pluie : " + data.forecast[i].probarain + "%";
-        document.getElementById(`dailySunshineDisplay${i}`).innerText = "Ensoleillement journalier : " + data.forecast[i].sun_hours + " heures";
-        document.getElementById(`latitudeDisplay${i}`).innerText = "Latitude : " +  data.forecast[i].latitude;
-        document.getElementById(`longitudeDisplay${i}`).innerText = "Longitude : " + data.forecast[i].longitude;
-        document.getElementById(`rr10Display${i}`).innerText = "Cumul de pluie (mm) : " + data.forecast[i].rr10;
-        document.getElementById(`wind10mDisplay${i}`).innerText = "Vent moyen à 10m : " + data.forecast[i].wind10m;
-        document.getElementById(`dirwind10mDisplay${i}`).innerText = "Direction du vent (°) : " + data.forecast[i].dirwind10m;
-
-        forecast.appendChild(option);  
+        document.querySelector(".minimTempDisplay" + i).innerText = "Température minimale : " + data.forecast[i].tmin + "°C";
+        document.querySelector(`.maxiTempDisplay` + i).innerText = "Température maximale : " + data.forecast[i].tmax + "°C";
+        document.querySelector(`.rainProbaDisplay` + i).innerText = "Probabilité de pluie : " + data.forecast[i].probarain + "%";
+        document.querySelector(`.dailySunshineDisplay` + i).innerText = "Ensoleillement journalier : " + data.forecast[i].sun_hours + " heures";
+        document.querySelector(`.latitudeDisplay` + i).innerText = "Latitude : " +  data.forecast[i].latitude;
+        document.querySelector(`.longitudeDisplay` + i).innerText = "Longitude : " + data.forecast[i].longitude;
+        document.querySelector(`.rr10Display` + i).innerText = "Cumul de pluie (mm) : " + data.forecast[i].rr10;
+        document.querySelector(`.wind10mDisplay` + i).innerText = "Vent moyen à 10m : " + data.forecast[i].wind10m;
+        document.querySelector(`.dirwind10mDisplay` + i).innerText = "Direction du vent (°) : " + data.forecast[i].dirwind10m;
     }
 }
 
