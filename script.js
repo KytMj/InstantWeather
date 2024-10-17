@@ -1,9 +1,14 @@
 let select = document.querySelector('#selectCommune');
-let imgWeather = document.getElementById("imgWeather");
 let checkboxes = document.querySelectorAll("ul input");
 let nbDays = document.querySelector("#nbDays");
 let forecast = document.querySelector("#forecast");
 let nbDaysNumber = document.getElementById("nbDaysNumber");
+
+var latitudeAff
+var longitudeAff
+var precipitationsAff
+var vitVentAff
+var dirVentAff
 
 const myToken = 'df67b5d9a4ad5c4d7edc7cb5bfd546524b5c69c768c28b951e0da9199128b388';
 //https://api.meteo-concept.com/api/ephemeride/0?token=df67b5d9a4ad5c4d7edc7cb5bfd546524b5c69c768c28b951e0da9199128b388
@@ -44,36 +49,98 @@ function weatherInformationsToday(){
         return response.json();
     }
     ).then((data) => {
-        document.querySelector(".minimTempDisplay").innerText = data.forecast[0].tmin + "°C";
-        document.querySelector(".maxiTempDisplay").innerText = data.forecast[0].tmax + "°C";
-        document.querySelector(".rainProbaDisplay").innerText = data.forecast[0].probarain + "%";
-        document.querySelector(".dailySunshineDisplay").innerText = data.forecast[0].sun_hours + " heure(s)";
-        document.querySelector(".latitudeDisplay").innerText = data.forecast[0].latitude;
-        document.querySelector(".longitudeDisplay").innerText = data.forecast[0].longitude;
-        document.querySelector(".rr10Display").innerText = data.forecast[0].rr10;
-        document.querySelector(".wind10mDisplay").innerText = data.forecast[0].wind10m;
-        document.querySelector(".dirwind10mDisplay").innerText = data.forecast[0].dirwind10m;
+        document.getElementById("minimTempDisplay").innerText = data.forecast[0].tmin + "°C";
+        document.getElementById("maxiTempDisplay").innerText = data.forecast[0].tmax + "°C";
+        document.getElementById("rainProbaDisplay").innerText = data.forecast[0].probarain + "%";
+        document.getElementById("dailySunshineDisplay").innerText = data.forecast[0].sun_hours + " heure(s)";
+        document.getElementById("latitudeDisplay").innerText = data.forecast[0].latitude;
+        document.getElementById("longitudeDisplay").innerText = data.forecast[0].longitude;
+        document.getElementById("rr10Display").innerText = data.forecast[0].rr10;
+        document.getElementById("wind10mDisplay").innerText = data.forecast[0].wind10m;
+        document.getElementById("dirwind10mDisplay").innerText = data.forecast[0].dirwind10m;
 
-        changingWeather(data.forecast[0].weather);
+        changingWeather(data.forecast[0].weather, document.getElementById("imgWeather"));
 
         if(nbDays.value > 1){
             forecastDays(nbDays.value, data);
             document.getElementById("forecast").className = "forecast";
-
         }
-    });
-    
-    checkboxes.forEach(element => { //displays the selected options / hides them if not
 
-        // element.id.substring(5) turns the checkbox id to the div id it corresponds
-        // check + element name for the checkboxes
-        // element name for the div
-        if(element.checked == true){
-            document.querySelectorAll("."+element.id.substring(5)).className = `weatherInfos ${element.id.substring(5)}`;
+        checkboxHandler();
+    });
+}
+
+function checkboxHandler(){
+    latitudeAff = checkboxes[0].checked;
+    longitudeAff = checkboxes[1].checked;
+    precipitationsAff = checkboxes[2].checked;
+    vitVentAff = checkboxes[3].checked;
+    dirVentAff = checkboxes[4].checked;
+
+    for (let i = 1; i < nbDays.value; i++) {
+        console.log("latitude"+i);
+        console.log(document.getElementById("latitude"+i).className);
+
+        if(latitudeAff){
+            document.getElementById("latitude"+i).className = "weatherInfos";
         }else{
-            document.querySelectorAll("."+element.id.substring(5)).className = "ghost";
+            document.getElementById("latitude"+i).className = "ghost";
         }
-    });
+
+        if(longitudeAff){
+            document.getElementById("longitude"+i).className = "weatherInfos";
+        }else{
+            document.getElementById("longitude"+i).className = "ghost";
+        }
+
+        if(precipitationsAff){
+            document.getElementById("rr10"+i).className = "weatherInfos";
+        }else{
+            document.getElementById("rr10"+i).className = "ghost";
+        }
+
+        if(vitVentAff){
+            document.getElementById("wind10m"+i).className = "weatherInfos";
+        }else{
+            document.getElementById("wind10m"+i).className = "ghost";
+        }
+
+        if(dirVentAff){
+            document.getElementById("dirwind10m"+i).className = "weatherInfos";
+        }else{
+            document.getElementById("dirwind10m"+i).className = "ghost";
+        }
+    }
+
+    if(latitudeAff){
+        document.getElementById("latitude").className = "weatherInfos";
+    }else{
+        document.getElementById("latitude").className = "ghost";
+    }
+
+    if(longitudeAff){
+        document.getElementById("longitude").className = "weatherInfos";
+    }else{
+        document.getElementById("longitude").className = "ghost";
+    }
+
+    if(precipitationsAff){
+        document.getElementById("rr10").className = "weatherInfos";
+    }else{
+        document.getElementById("rr10").className = "ghost";
+    }
+
+    if(vitVentAff){
+        document.getElementById("wind10m").className = "weatherInfos";
+    }else{
+        document.getElementById("wind10m").className = "ghost";
+    }
+
+    if(dirVentAff){
+        document.getElementById("dirwind10m").className = "weatherInfos";
+    }else{
+        document.getElementById("dirwind10m").className = "ghost";
+    }
 }
 
 function newResearch(){
@@ -94,12 +161,11 @@ function newResearch(){
     }
     checkboxes.forEach(element => { // puts all the checkboxes back to selected
         element.checked = true;  
-
     });
 }
 
 
-function changingWeather(weather){
+function changingWeather(weather, imgWeather){
     let imgName = "";
 
     if(weather === 0){
@@ -134,27 +200,58 @@ function forecastDays(numberOfDays, data){
         let weatherInfosForecast = document.createElement('div');
         weatherInfosForecast.className = "viewInfos";
 
+        let weatherIcon = document.createElement('div');
+        weatherIcon.id = "imgWeather" + i ;
+
         for (let j = 0; j < id.length; j++) {
             let infosBox = document.createElement('div');
-            infosBox.className = "weatherInfos " + id[j];
+            infosBox.className = "weatherInfos "+id[j];
+            infosBox.id =  id[j]+i;
+    
 
             let paragraph = document.createElement('p');
-            paragraph.className = "formElement " + id[j] + "Display" + i;
+            paragraph.className = "formElement";
+            paragraph.id = "textInfo" + "ID" + i + ":" +j;
+
+            let infos = document.createElement('p');
+            infos.id = id[j] + "Display" + i;
 
             infosBox.appendChild(paragraph);
+            infosBox.appendChild(infos);
             weatherInfosForecast.appendChild(infosBox);
         }
+        weatherInfosForecast.appendChild(weatherIcon);
         forecast.appendChild(weatherInfosForecast);  
 
-        document.querySelector(".minimTempDisplay" + i).innerText = "Température minimale : " + data.forecast[i].tmin + "°C";
-        document.querySelector(`.maxiTempDisplay` + i).innerText = "Température maximale : " + data.forecast[i].tmax + "°C";
-        document.querySelector(`.rainProbaDisplay` + i).innerText = "Probabilité de pluie : " + data.forecast[i].probarain + "%";
-        document.querySelector(`.dailySunshineDisplay` + i).innerText = "Ensoleillement journalier : " + data.forecast[i].sun_hours + " heures";
-        document.querySelector(`.latitudeDisplay` + i).innerText = "Latitude : " +  data.forecast[i].latitude;
-        document.querySelector(`.longitudeDisplay` + i).innerText = "Longitude : " + data.forecast[i].longitude;
-        document.querySelector(`.rr10Display` + i).innerText = "Cumul de pluie (mm) : " + data.forecast[i].rr10;
-        document.querySelector(`.wind10mDisplay` + i).innerText = "Vent moyen à 10m : " + data.forecast[i].wind10m;
-        document.querySelector(`.dirwind10mDisplay` + i).innerText = "Direction du vent (°) : " + data.forecast[i].dirwind10m;
+        changingWeather(data.forecast[i].weather, document.getElementById("imgWeather"+i));
+
+        document.getElementById("textInfo" + "ID" + i + ":" +0).innerText = "Température minimale : ";
+        document.getElementById("minimTempDisplay" + i).innerText = data.forecast[i].tmin + "°C";
+
+        document.getElementById("textInfo" + "ID" + i + ":" +1).innerText = "Température maximale : ";
+        document.getElementById(`maxiTempDisplay` + i).innerText = data.forecast[i].tmax + "°C";
+
+        document.getElementById("textInfo" + "ID" + i + ":" +2).innerText = "Probabilité de pluie : ";
+        document.getElementById(`rainProbaDisplay` + i).innerText = data.forecast[i].probarain + "%";
+
+        document.getElementById("textInfo" + "ID" + i + ":" +3).innerText = "Ensoleillement journalier : ";
+        document.getElementById(`dailySunshineDisplay` + i).innerText = data.forecast[i].sun_hours + " heure(s)";
+
+        document.getElementById("textInfo" + "ID" + i + ":" +4).innerText = "Latitude : ";
+        document.getElementById(`latitudeDisplay` + i).innerText = data.forecast[i].latitude;
+
+        document.getElementById("textInfo" + "ID" + i + ":" +5).innerText = "Longitude : " ;
+        document.getElementById(`longitudeDisplay` + i).innerText = data.forecast[i].longitude;
+
+        document.getElementById("textInfo" + "ID" + i + ":" +6).innerText = "Cumul de pluie (mm) : " ;
+        document.getElementById(`rr10Display` + i).innerText = data.forecast[i].rr10;
+
+        document.getElementById("textInfo" + "ID" + i + ":" +7).innerText = "Vent moyen à 10m : " ;
+        document.getElementById(`wind10mDisplay` + i).innerText = data.forecast[i].wind10m;
+
+        document.getElementById("textInfo" + "ID" + i + ":" +8).innerText = "Direction du vent (°) : ";
+        document.getElementById(`dirwind10mDisplay` + i).innerText = data.forecast[i].dirwind10m;
+
     }
 }
 
@@ -170,6 +267,5 @@ nbDaysNumber.addEventListener("input", (e) => { //prevents user to put manually 
 });
 
 nbDaysNumber.addEventListener("click", (e) =>{ // when the user clicks on number input it selects everything
-    console.log("oui");
     nbDaysNumber.select();
 });
