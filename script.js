@@ -214,6 +214,7 @@ function forecastDays(numberOfDays, data){
             paragraph.id = "textInfo" + "ID" + i + ":" +j;
 
             let infos = document.createElement('p');
+            infos.className = "formElement";
             infos.id = id[j] + "Display" + i;
 
             infosBox.appendChild(paragraph);
