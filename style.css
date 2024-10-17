@@ -125,6 +125,7 @@ input{
 
 .weather img{
     display: block;
+    position:relative;/*modifier l'emplacement du nuage*/
     margin-left: auto;
     margin-right: auto;
 }
@@ -147,7 +148,6 @@ input{
 }
 
 .viewInfos .weatherInfos{
-    text-align: center;
     font-size:1.5vw;
     color: rgb(38, 119, 190);
     margin:auto;
