@@ -56,7 +56,7 @@ html,body{
         perspective(350vw)
         translate3d(0px, 0px, -250px)
         scale(1, 1);
-    transition: 1s ease-in-out transform;
+    transition: 2s ease-in-out transform;
 }
 
 .BoxTransition:hover {
@@ -64,7 +64,7 @@ html,body{
 }
 
 .weather{
-    background-color: rgb(206, 207, 206);
+    background-color: rgb(220, 223, 220);
     color: rgb(38, 119, 190);
     font-size: 0.8vw;
     padding-top:0px;
@@ -92,25 +92,30 @@ html,body{
     margin : 0.2em;
 }
 
-
 form{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    font-size: 1vw;
+    font-size: 1.3vw;
+}
+
+form ul li{
+    padding-top:0.8vw;
 }
 
 .selectCommune{
     font-size: 1vw;
     height: 2em;
     width: 20em;
+    border:none;
+    border-radius:7px;
 }
 
 input{
-    font-size: 1vw;
+    font-size: 1.5vw;
     border:none;
-    border-radius: 10px;
+    border-radius: 7px;
 }
 
 
@@ -123,7 +128,13 @@ input{
     margin:2%;
     padding-left:2vw;
     padding-right:2vw;
-    font-size: 1.3vw;
+    font-size: 1.5vw;
+}
+
+.weather img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -171,7 +182,7 @@ button:hover{
 
 /*-------------------------------------------------------*/
 /*--------------------Nuages Volants---------------------*/
-/*-------------------------------------------------------*/
+/*-------------------------------------------------------
 .cloudLeft{
     position:absolute;
     top:0px;
@@ -196,9 +207,9 @@ button:hover{
     -webkit-animation: shake-horizontal 25s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite alternate both;
 	        animation: shake-horizontal 25s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite alternate both;
 }
-
+*/
 /* ----------- RESPONSIVE PARAMETERS ----------- */
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1100px) {
     body {
         background: linear-gradient(13deg,#62b6b2 20%, #72b5e2 50%) no-repeat center center fixed;
     }
@@ -224,25 +235,49 @@ button:hover{
 
     .codeResearch label{
         font-size: 3vw;
+        
     }
 
-    .codeResearch ul li{
-        padding-top:2vw;
+    form ul li{
+        padding-top:1vw;
+    }
+
+    form{
+        font-size: 3vw; 
     }
 
     .BoxTransition{
-        transition: 3s ease-in-out transform;
+        transform:
+        perspective(350vw)
+        translate3d(0px, 0px, -50px)
+        scale(1, 1);
+        transition: 1.5s ease-in-out transform;
+    }
+    .BoxTransition:hover {
+        transform: translate3d(0px, 0px, -50px);
     }
 
     .weatherInfos{
-        font-size: 3vw;
+        font-size: 1.7vw;
+    }
+
+    .selectCommune{
+        font-size: 1.5vw;
+    }
+    
+    input{
+        font-size: 2vw;
+    }
+
+    .weatherInfos{
+        font-size: 2vw;
     }
 
 }
 
 @media only screen and (max-width: 600px) {
     body {
-        background: linear-gradient(13deg,#a3c2c0 20%, #943487 50%) no-repeat center center fixed;
+        background: linear-gradient(13deg,#d18033 10%,#d4be9d 20%, #528dcf 50%) no-repeat center center fixed;
     }
 
     .Title{
@@ -271,6 +306,14 @@ button:hover{
 
     .weatherInfos{
         font-size: 4vw;
+    }
+
+    form ul li{
+        padding-top:1.5vw;
+    }
+
+    form{
+        font-size: 4vw; 
     }
 }
 /* ----------------------------------------------
