@@ -55,49 +55,49 @@
                 <button class="ghost" id="validation" onclick="weatherInformationsToday()">Valider</button>
             </div>
 
-            <div id="viewInfos" class="ghost">
+            <div id="viewInfos" class="ghost viewInfos">
                 <div id="imgWeather"></div>
-                <div class="weatherInfos">
+                <div class="weatherInfos minimTemp">
                     <p class="formElement"> Température minimale : </p>
-                    <p class="formElement" id="minimTempDisplay"> </p>
+                    <p class="formElement minimTempDisplay"> </p>
                 </div>
-                <div class="weatherInfos">
+                <div class="weatherInfos maxiTemp">
                     <p class="formElement"> Température maximale : </p>
-                    <p class="formElement" id="maxiTempDisplay"> </p>
+                    <p class="formElement maxiTempDisplay"> </p>
                 </div>
-                <div class="weatherInfos">
+                <div class="weatherInfos rainProba">
                     <p class="formElement"> Probabilité de pluie : </p>
-                    <p class="formElement" id="rainProbaDisplay"> </p>
+                    <p class="formElement rainProbaDisplay"> </p>
                 </div>
-                <div class="weatherInfos">
+                <div class="weatherInfos dailySunshine">
                     <p class="formElement"> Ensoleillement journalier : </p>
-                    <p class="formElement" id="dailySunshineDisplay"> </p>
+                    <p class="formElement dailySunshineDisplay"> </p>
                 </div>
-                <div class="weatherInfos" id="latitude">
+                <div class="weatherInfos latitude">
                     <p class="formElement"> Latitude : </p>
-                    <p class="formElement" id = "latitudeDisplay"> </p>
+                    <p class="formElement latitudeDisplay"> </p>
                 </div>
-                <div class="weatherInfos" id="longitude">
+                <div class="weatherInfos longitude">
                     <p class="formElement"> Longitude : </p>
-                    <p class="formElement" id = "longitudeDisplay"> </p>
+                    <p class="formElement longitudeDisplay"> </p>
                 </div>
-                <div class="weatherInfos" id="rr10">
+                <div class="weatherInfos rr10">
                     <p class="formElement"> Cumul de pluie (mm) : </p>
-                    <p class="formElement" id="rr10Display"> </p>
+                    <p class="formElement rr10Display"> </p>
                 </div>
-                <div class="weatherInfos" id="wind10m">
+                <div class="weatherInfos wind10m">
                     <p class="formElement"> Vent moyen à 10m (km/h) : </p>
-                    <p class="formElement" id="wind10mDisplay"> </p>
+                    <p class="formElement wind10mDisplay"> </p>
                 </div>
-                <div class="weatherInfos" id="dirwind10m">
+                <div class="weatherInfos dirwind10m">
                     <p class="formElement"> Direction du vent (°) : </p>
-                    <p class="formElement" id="dirwind10mDisplay"> </p>
+                    <p class="formElement dirwind10mDisplay"> </p>
                 </div>
                 <button id="newResearch" onclick="newResearch()">Nouvelle recherche</button>
             </div>
         </section>
 
-        <div id="forecast"></div>
+        <section id="forecast" class="ghost forecast"></section>
     </main>
     <script src="./script.js"></script>
 </body>
