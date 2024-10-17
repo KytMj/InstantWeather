@@ -57,12 +57,10 @@ html,body{
 .weather{
     background-color: rgb(220, 223, 220);
     color: rgb(38, 119, 190);
-    /*font-size: 0.8vw; INUTILE*/
-    padding-top:0px;
     padding : 4vw;
     border-radius: 1.5vw;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
-    margin-top:10%;
+    margin-top:5%;
     margin-right:8%;
 }
 
@@ -120,16 +118,29 @@ input{
     margin:2%;
     padding-left:2vw;
     padding-right:2vw;
-    font-size: 1.5vw;
+    font-size: 1vw;
+}
+.minimTemp, .maxiTemp{
+    display:flex;
+    flex-direction: column;
+    text-align: center;
 }
 
 .weather img{
     display: block;
-    position:relative;/*modifier l'emplacement du nuage*/
+    /*position:relative;modifier l'emplacement du nuage*/
     margin-left: auto;
     margin-right: auto;
 }
 
+.minimTempDisplay{
+    font-size:2vw;
+}
+
+.maxiTempDisplay{
+    font-size:3vw;
+}
+/* -------------Cartes ------------*/
 .forecast{
     display:flex;
     flex-direction: column;
@@ -148,7 +159,7 @@ input{
 }
 
 .viewInfos .weatherInfos{
-    font-size:1.5vw;
+    font-size:1.2vw;
     color: rgb(38, 119, 190);
     margin:auto;
 }
@@ -294,6 +305,14 @@ button:hover{
         font-size:2vw;
     }
 
+    .minimTempDisplay{
+        font-size:4vw;
+    }
+    
+    .maxiTempDisplay{
+        font-size:5.5vw;
+    }
+
 }
 
 @media only screen and (max-width: 600px) {
@@ -339,6 +358,14 @@ button:hover{
 
     .viewInfos .weatherInfos{
         font-size:3vw;
+    }
+
+    .minimTempDisplay{
+        font-size:6vw;
+    }
+    
+    .maxiTempDisplay{
+        font-size:8.5vw;
     }
 }
 /* ----------------------------------------------
