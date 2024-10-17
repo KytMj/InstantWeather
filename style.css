@@ -2,15 +2,13 @@
 /*https://graphiste.com/blog/animations-css-bordures/*/
 main{
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    /*align-items:center; -- réduit la taille du titre et de la boite*/
 }
 
 .ghost{
     display: none;
 }
-
-
 
 
 /*-------------------------------------------------------*/
@@ -31,24 +29,17 @@ html,body{
     font-style: normal;
 }
 
-
+.together{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
 
 
 /*-------------------------------------------------------*/
 /*--------------Boite Infos Principales------------------*/
 /*-------------------------------------------------------*/
-
-.Box{
-    padding : 4vw;
-    margin: 0.3em;
-    border-radius: 1.5vw;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-}
 
 .BoxTransition{
     /* from https://polypane.app/css-3d-transform-examples/ */
@@ -66,12 +57,13 @@ html,body{
 .weather{
     background-color: rgb(220, 223, 220);
     color: rgb(38, 119, 190);
-    font-size: 0.8vw;
+    /*font-size: 0.8vw; INUTILE*/
     padding-top:0px;
     padding : 4vw;
     border-radius: 1.5vw;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
     margin-top:10%;
+    margin-right:8%;
 }
 
 .weather h2{
@@ -135,6 +127,30 @@ input{
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.forecast{
+    display:flex;
+    flex-direction: column;
+    padding : 4vw;
+    margin:2%;
+}
+
+.viewInfos{
+    display:flex;
+    flex-direction: column;
+    background-color: rgb(220, 223, 220);
+    margin:1vw;
+    padding:1vw;
+    border-radius: 1vw;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+}
+
+.viewInfos .weatherInfos{
+    text-align: center;
+    font-size:1.5vw;
+    color: rgb(38, 119, 190);
+    margin:auto;
 }
 
 
@@ -214,7 +230,7 @@ button:hover{
         background: linear-gradient(13deg,#62b6b2 20%, #72b5e2 50%) no-repeat center center fixed;
     }
 
-    main{
+    .together{
         flex-direction: column;
     }
 
@@ -228,6 +244,7 @@ button:hover{
     
     .weather{
         padding : 5%;
+        margin-right:0;
     }
     .weather h2{
         font-size: 3vw;;
@@ -272,6 +289,10 @@ button:hover{
     .weatherInfos{
         font-size: 2vw;
     }
+    
+    .viewInfos .weatherInfos{
+        font-size:2vw;
+    }
 
 }
 
@@ -314,6 +335,10 @@ button:hover{
 
     form{
         font-size: 4vw; 
+    }
+
+    .viewInfos .weatherInfos{
+        font-size:3vw;
     }
 }
 /* ----------------------------------------------
