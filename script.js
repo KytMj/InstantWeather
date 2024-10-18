@@ -48,7 +48,7 @@ function weatherInformationsToday(){
     fetch(url).then((response) => {
         return response.json();
     }
-    ).then((data) => {
+    ).then((data) => { 
         document.getElementById("minimTempDisplay").innerText = data.forecast[0].tmin + "°C";
         document.getElementById("maxiTempDisplay").innerText = data.forecast[0].tmax + "°C";
         document.getElementById("rainProbaDisplay").innerText = data.forecast[0].probarain + "%";
