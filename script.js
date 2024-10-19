@@ -203,23 +203,27 @@ function forecastDays(numberOfDays, data){
         let weatherIcon = document.createElement('div');
         weatherIcon.id = "imgWeather" + i ;
 
+        let weatherInfosAll = document.createElement('div');
+        weatherInfosAll.className = "weatherInfosAll";
+
         for (let j = 0; j < id.length; j++) {
-            let infosBox = document.createElement('div');
-            infosBox.className = "weatherInfos "+id[j];
-            infosBox.id =  id[j]+i;
-    
 
-            let paragraph = document.createElement('p');
-            paragraph.className = "formElement";
-            paragraph.id = "textInfo" + "ID" + i + ":" +j;
+            let uniqueInfoBox = document.createElement('div');
+            uniqueInfoBox.className = "weatherInfos "+id[j];
+            uniqueInfoBox.id =  id[j]+i;
 
-            let infos = document.createElement('p');
-            infos.className = "formElement";
-            infos.id = id[j] + "Display" + i;
+            let pText = document.createElement('p');
+            pText.className = "formElement";
+            pText.id = "textInfo" + "ID" + i + ":" +j;
 
-            infosBox.appendChild(paragraph);
-            infosBox.appendChild(infos);
-            weatherInfosForecast.appendChild(infosBox);
+            let pInfo = document.createElement('p');
+            pInfo.className = "formElement";
+            pInfo.id = id[j] + "Display" + i;
+
+            weatherInfosAll.appendChild(uniqueInfoBox);
+            uniqueInfoBox.appendChild(pText);
+            uniqueInfoBox.appendChild(pInfo);
+            weatherInfosForecast.appendChild(weatherInfosAll);
         }
         weatherInfosForecast.appendChild(weatherIcon);
         forecast.appendChild(weatherInfosForecast);  
