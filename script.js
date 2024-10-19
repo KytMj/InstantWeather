@@ -1,17 +1,22 @@
+const myToken = 'df67b5d9a4ad5c4d7edc7cb5bfd546524b5c69c768c28b951e0da9199128b388';
+//https://api.meteo-concept.com/api/ephemeride/0?token=df67b5d9a4ad5c4d7edc7cb5bfd546524b5c69c768c28b951e0da9199128b388
+
 let select = document.querySelector('#selectCommune');
 let checkboxes = document.querySelectorAll("ul input");
 let nbDays = document.querySelector("#nbDays");
 let forecast = document.querySelector("#forecast");
 let nbDaysNumber = document.getElementById("nbDaysNumber");
 
+let cityName;
+let todayDate = Date.now();
+
+let id = ["minimTemp", "maxiTemp", "rainProba", "dailySunshine", "latitude", "longitude", "rr10", "wind10m", "dirwind10m"];
+
 var latitudeAff
 var longitudeAff
 var precipitationsAff
 var vitVentAff
 var dirVentAff
-
-const myToken = 'df67b5d9a4ad5c4d7edc7cb5bfd546524b5c69c768c28b951e0da9199128b388';
-//https://api.meteo-concept.com/api/ephemeride/0?token=df67b5d9a4ad5c4d7edc7cb5bfd546524b5c69c768c28b951e0da9199128b388
 
 document.querySelector('#postalCode').addEventListener('input', function (){
     if(this.value.length == 5) {
@@ -27,8 +32,8 @@ document.querySelector('#postalCode').addEventListener('input', function (){
             while(select.firstChild){
                 select.removeChild(select.firstChild);
             }
-            for(let ville of data){
-                let option = new Option(ville.nom, ville.code);
+            for(let city of data){
+                let option = new Option(city.nom, city.code);
                 select.appendChild(option);
             }      
         });
@@ -39,6 +44,7 @@ function weatherInformationsToday(){
     //let city = select.options[select.selectedIndex].text;    donne le nom de la commune
 
     let insee = select.value;   //donne la valeur insee de la commune sélectionnée
+    cityName = select.options[select.selectedIndex].text;   
     let url = `https://api.meteo-concept.com/api/forecast/daily?token=${myToken}&insee=${insee}`;
 
     document.getElementById("codeResearch").className = "ghost";
@@ -78,9 +84,6 @@ function checkboxHandler(){
     dirVentAff = checkboxes[4].checked;
 
     for (let i = 1; i < nbDays.value; i++) {
-        console.log("latitude"+i);
-        console.log(document.getElementById("latitude"+i).className);
-
         if(latitudeAff){
             document.getElementById("latitude"+i).className = "weatherInfos right";
         }else{
@@ -194,11 +197,14 @@ function changingWeather(weather, imgWeather){
 }
 
 function forecastDays(numberOfDays, data){
-    let id = ["minimTemp", "maxiTemp", "rainProba", "dailySunshine", "latitude", "longitude", "rr10", "wind10m", "dirwind10m"];
-
     for (let i = 1; i < numberOfDays; i++) {
         let weatherInfosForecast = document.createElement('div');
-        weatherInfosForecast.className = "viewInfos";
+        weatherInfosForecast.className = "viewInfos BoxTransition";
+
+        let cityForecast = document.createElement('h2');
+        cityForecast.innerText = cityName;
+        cityForecast.className = "";
+        weatherInfosForecast.appendChild(cityForecast)
 
         let weatherIcon = document.createElement('div');
         weatherIcon.id = "imgWeather" + i ;
@@ -207,7 +213,6 @@ function forecastDays(numberOfDays, data){
         weatherInfosAll.className = "weatherInfosAll";
 
         for (let j = 0; j < id.length; j++) {
-
             let uniqueInfoBox = document.createElement('div');
             uniqueInfoBox.className = "weatherInfos "+id[j];
             uniqueInfoBox.id =  id[j]+i;
@@ -223,8 +228,8 @@ function forecastDays(numberOfDays, data){
             weatherInfosAll.appendChild(uniqueInfoBox);
             uniqueInfoBox.appendChild(pText);
             uniqueInfoBox.appendChild(pInfo);
-            weatherInfosForecast.appendChild(weatherInfosAll);
         }
+        weatherInfosForecast.appendChild(weatherInfosAll);
         weatherInfosForecast.appendChild(weatherIcon);
         forecast.appendChild(weatherInfosForecast);  
 
