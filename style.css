@@ -20,7 +20,6 @@ body{
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover; 
-    background-size: 100% 100%;
 }
 
 html,body{
@@ -29,6 +28,7 @@ html,body{
     font-style: normal;
 }
 
+/*---------Titre et Carte Principale sur la même ligne----------*/
 .together{
     display: flex;
     flex-direction: row;
@@ -56,7 +56,7 @@ html,body{
 
 .weather{
     background-color: rgb(220, 223, 220);
-    color: rgb(38, 119, 190);
+    color: rgb(7, 69, 124);
     padding : 4vw;
     border-radius: 1.5vw;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
@@ -131,6 +131,7 @@ input{
     display: block;
     margin-left: auto;
     margin-right: auto;
+    width:10vw;
 }
 
 .minimTempDisplay{
@@ -170,7 +171,7 @@ input{
 
 .weatherInfosAll{
     flex:3;
-    color: rgb(38, 119, 190);
+    color: rgb(7, 69, 124);
     display: flex;
     flex-flow: row wrap;
 }
@@ -202,6 +203,13 @@ input{
     justify-content: center;
     align-items: center;
     justify-content: space-around; /* Espace entre les éléments */
+    object-fit: cover;
+}
+
+
+.customWeatherIcon{
+    width:15vw;
+    height:auto;
 }
 
 #minimTempDisplay1,#minimTempDisplay2,#minimTempDisplay3,#minimTempDisplay4,#minimTempDisplay5,#minimTempDisplay6{
@@ -263,7 +271,7 @@ button:hover{
         flex-direction: column;
     }
 
-    .Title h1{
+    .Title h1, .minimTempDisplay{
         font-size: 4vw;
     }
     
@@ -288,10 +296,6 @@ button:hover{
         padding-top:1vw;
     }
 
-    form{
-        font-size: 3vw; 
-    }
-
     .BoxTransition{
         transform:
         perspective(350vw)
@@ -310,21 +314,9 @@ button:hover{
     .selectCommune{
         font-size: 1.5vw;
     }
-    
-    input{
-        font-size: 2vw;
-    }
 
-    .weatherInfos{
+    .weatherInfos, .viewInfos .weatherInfos, input{
         font-size: 2vw;
-    }
-    
-    .viewInfos .weatherInfos{
-        font-size:2vw;
-    }
-
-    .minimTempDisplay{
-        font-size:4vw;
     }
     
     .maxiTempDisplay{
@@ -348,7 +340,7 @@ button:hover{
         flex-basis: 45%;
     }
     
-    #minimTempDisplay1,#minimTempDisplay2,#minimTempDisplay3,#minimTempDisplay4,#minimTempDisplay5,#minimTempDisplay6{
+    form, #minimTempDisplay1,#minimTempDisplay2,#minimTempDisplay3,#minimTempDisplay4,#minimTempDisplay5,#minimTempDisplay6{
         font-size:3vw;
     }
     #maxiTempDisplay1,#maxiTempDisplay2,#maxiTempDisplay3,#maxiTempDisplay4,#maxiTempDisplay5,#maxiTempDisplay6{
@@ -369,7 +361,7 @@ button:hover{
         font-size: 8vw;
     }
 
-    .Title p{
+    .Title p, .weatherInfos, form{
         font-size: 4vw;
     }
 
@@ -377,45 +369,24 @@ button:hover{
         padding : 5%;
     }
 
-    .weather h2{
+    .weather h2, .codeResearch label{
         font-size: 5vw;;
-    }
-
-    .codeResearch label{
-        font-size:5vw;
-    }
-
-    .weatherInfos{
-        font-size: 4vw;
     }
 
     form ul li{
         padding-top:1.5vw;
     }
 
-    form{
-        font-size: 4vw; 
-    }
-
     .viewInfos .weatherInfos{
         font-size:3vw;
     }
 
-    .minimTempDisplay{
+    .minimTempDisplay, #minimTempDisplay1, #minimTempDisplay2, #minimTempDisplay3, #minimTempDisplay4, #minimTempDisplay5, #minimTempDisplay6{
         font-size:6vw;
     }
-    
-    .maxiTempDisplay{
-        font-size:8.5vw;
-    }
-
-    #minimTempDisplay1, #minimTempDisplay2, #minimTempDisplay3, #minimTempDisplay4, #minimTempDisplay5, #minimTempDisplay6{
-        font-size:6vw;
-    }
-    #maxiTempDisplay1, #maxiTempDisplay2, #maxiTempDisplay3, #maxiTempDisplay4, #maxiTempDisplay5, #maxiTempDisplay6{
+    .maxiTempDisplay, #maxiTempDisplay1, #maxiTempDisplay2, #maxiTempDisplay3, #maxiTempDisplay4, #maxiTempDisplay5, #maxiTempDisplay6{
         font-size:8vw;
     }
-
 
     .forecast{
         margin-top:18%;
@@ -440,5 +411,9 @@ button:hover{
     .weatherInfosAll .rainProba{
         font-size:3.5vw;
         background-color:rgba(231, 231, 231, 0) ;
+    }
+
+    .customWeatherIcon, .weather img{
+        width:20vw;
     }
 }

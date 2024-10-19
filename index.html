@@ -22,12 +22,14 @@
                 <h2 id="title">Choisissez votre commune et la météo s'affichera</h2>
                 <div id="codeResearch" class="codeResearch">
                     <form method="GET">
-                        <label class="formElement"> Code postal :</label>
+                        <label class="formElement" for="postalCode"> Code postal :</label>
                         <input type="text" id="postalCode" name="postalCode" maxlength="5" class="formElement">
+                        <label for="selectCommune" class="ghost"> Commune </label>
                         <select id="selectCommune" class="selectCommune formElement ghost"> </select>
                         
                         <label for="nbDays"> Nombre de jours :</label>
                         <input type="range" value="1" name="amountRange" min="1" max="7" oninput="this.form.amountInput.value=this.value" id="nbDays">
+                        <label for="nbDaysNumber" class="ghost"> Nombre de jour (input)</label>
                         <input type="number" value = "1" name="amountInput" min="1" max="7" oninput="this.form.amountRange.value=this.value" id="nbDaysNumber"> <!-- got this from stackoverflow (3rd proposition) : https://stackoverflow.com/questions/10004723/html5-input-type-range-show-range-value-->
                         <ul>
                             <li>
