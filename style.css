@@ -172,15 +172,28 @@ input{
     flex:3;
     color: rgb(38, 119, 190);
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
+}
+
+.weatherInfosAll .minimTemp, 
+.weatherInfosAll .maxiTemp,
+.weatherInfosAll .dailySunshine,
+.weatherInfosAll .rainProba,
+.right{
+    display:flex;
+    flex-direction: column;
+    padding:1%;
+    flex: 1;
 }
 
 .weatherInfosAll .minimTemp, 
 .weatherInfosAll .maxiTemp,
 .weatherInfosAll .dailySunshine,
 .weatherInfosAll .rainProba{
-    display:flex;
-    flex-direction: row;
+    font-size:1.2vw;
+    border-radius: 10px;
+    flex-basis: 20%;
+    background-color:rgba(231, 231, 231, 0.836) ;
 }
 
 #imgWeather1, #imgWeather2, #imgWeather3, #imgWeather4, #imgWeather5, #imgWeather6{
@@ -188,6 +201,15 @@ input{
     display: flex;
     justify-content: center;
     align-items: center;
+    justify-content: space-around; /* Espace entre les éléments */
+}
+
+#minimTempDisplay1,#minimTempDisplay2,#minimTempDisplay3,#minimTempDisplay4,#minimTempDisplay5,#minimTempDisplay6{
+    font-size:2vw;
+}
+
+#maxiTempDisplay1,#maxiTempDisplay2,#maxiTempDisplay3,#maxiTempDisplay4,#maxiTempDisplay5,#maxiTempDisplay6{
+    font-size:2.7vw;
 }
 
 /*-------------------Button-----------------*/
@@ -312,8 +334,25 @@ button:hover{
     .rainProba{
         font-size:1.9vw;
     }
+    
     .dailySunshine{
-        font-size: 1.3vw;
+        display: flex;
+        flex-direction: column;
+        font-size: 1.9vw;
+    }
+    
+    .weatherInfosAll .minimTemp, 
+    .weatherInfosAll .maxiTemp,
+    .weatherInfosAll .dailySunshine,
+    .weatherInfosAll .rainProba, .right{
+        flex-basis: 45%;
+    }
+    
+    #minimTempDisplay1,#minimTempDisplay2,#minimTempDisplay3,#minimTempDisplay4,#minimTempDisplay5,#minimTempDisplay6{
+        font-size:3vw;
+    }
+    #maxiTempDisplay1,#maxiTempDisplay2,#maxiTempDisplay3,#maxiTempDisplay4,#maxiTempDisplay5,#maxiTempDisplay6{
+        font-size:3.5vw;
     }
 }
 
@@ -375,5 +414,31 @@ button:hover{
     }
     #maxiTempDisplay1, #maxiTempDisplay2, #maxiTempDisplay3, #maxiTempDisplay4, #maxiTempDisplay5, #maxiTempDisplay6{
         font-size:8vw;
+    }
+
+
+    .forecast{
+        margin-top:18%;
+    }
+    .viewInfos{
+        flex-direction: column-reverse;
+    }
+
+    .weatherInfosAll{
+        display: flex;
+        flex-flow: column wrap;
+
+    }
+
+    .right{
+        flex-direction: row;
+    }
+    
+    .weatherInfosAll .minimTemp, 
+    .weatherInfosAll .maxiTemp,
+    .weatherInfosAll .dailySunshine,
+    .weatherInfosAll .rainProba{
+        font-size:3.5vw;
+        background-color:rgba(231, 231, 231, 0) ;
     }
 }

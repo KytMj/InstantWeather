@@ -82,31 +82,31 @@ function checkboxHandler(){
         console.log(document.getElementById("latitude"+i).className);
 
         if(latitudeAff){
-            document.getElementById("latitude"+i).className = "weatherInfos";
+            document.getElementById("latitude"+i).className = "weatherInfos right";
         }else{
             document.getElementById("latitude"+i).className = "ghost";
         }
 
         if(longitudeAff){
-            document.getElementById("longitude"+i).className = "weatherInfos";
+            document.getElementById("longitude"+i).className = "weatherInfos right";
         }else{
             document.getElementById("longitude"+i).className = "ghost";
         }
 
         if(precipitationsAff){
-            document.getElementById("rr10"+i).className = "weatherInfos";
+            document.getElementById("rr10"+i).className = "weatherInfos right";
         }else{
             document.getElementById("rr10"+i).className = "ghost";
         }
 
         if(vitVentAff){
-            document.getElementById("wind10m"+i).className = "weatherInfos";
+            document.getElementById("wind10m"+i).className = "weatherInfos right";
         }else{
             document.getElementById("wind10m"+i).className = "ghost";
         }
 
         if(dirVentAff){
-            document.getElementById("dirwind10m"+i).className = "weatherInfos";
+            document.getElementById("dirwind10m"+i).className = "weatherInfos right";
         }else{
             document.getElementById("dirwind10m"+i).className = "ghost";
         }
