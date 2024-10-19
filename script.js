@@ -8,8 +8,7 @@ let forecast = document.querySelector("#forecast");
 let nbDaysNumber = document.getElementById("nbDaysNumber");
 
 let cityName;
-let todayDate = Date.now();
-
+let todayDate = new Date();
 let id = ["minimTemp", "maxiTemp", "rainProba", "dailySunshine", "latitude", "longitude", "rr10", "wind10m", "dirwind10m"];
 
 var latitudeAff
@@ -55,6 +54,8 @@ function weatherInformationsToday(){
         return response.json();
     }
     ).then((data) => { 
+        document.getElementById("cityName").innerText = cityName;
+        document.getElementById("todayDate").innerText = todayDate.toLocaleDateString(undefined, {dateStyle: 'long'});
         document.getElementById("minimTempDisplay").innerText = data.forecast[0].tmin + "°C";
         document.getElementById("maxiTempDisplay").innerText = data.forecast[0].tmax + "°C";
         document.getElementById("rainProbaDisplay").innerText = data.forecast[0].probarain + "%";
@@ -165,6 +166,7 @@ function newResearch(){
     checkboxes.forEach(element => { // puts all the checkboxes back to selected
         element.checked = true;  
     });
+    todayDate = new Date();
 }
 
 
@@ -204,7 +206,13 @@ function forecastDays(numberOfDays, data){
         let cityForecast = document.createElement('h2');
         cityForecast.innerText = cityName;
         cityForecast.className = "";
-        weatherInfosForecast.appendChild(cityForecast)
+        weatherInfosForecast.appendChild(cityForecast);
+
+        let dateForecast = document.createElement('h2');
+        todayDate.setDate(todayDate.getDate() + 1);
+        dateForecast.innerText = todayDate.toLocaleDateString(undefined, {dateStyle: 'long'});
+        dateForecast.className = "";
+        weatherInfosForecast.appendChild(dateForecast);
 
         let weatherIcon = document.createElement('div');
         weatherIcon.id = "imgWeather" + i ;
