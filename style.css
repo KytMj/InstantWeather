@@ -120,6 +120,7 @@ input{
     padding-right:2vw;
     font-size: 1vw;
 }
+
 .minimTemp, .maxiTemp{
     display:flex;
     flex-direction: column;
@@ -152,35 +153,42 @@ input{
 }
 
 .viewInfos{
+    display:flex;
+    flex-direction: row-reverse;
     background-color: rgb(220, 223, 220);
     margin:1vw;
     padding:2vw;
     padding-bottom:3vw;
     border-radius: 1vw;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    justify-content: space-around;
 }
 
 .viewInfos .weatherInfos{
+    margin:1%;
+}
+
+.weatherInfosAll{
+    flex:3;
     color: rgb(38, 119, 190);
-    padding:0;
-    margin:auto;
+    display: flex;
+    flex-flow: column wrap;
 }
 
-/*#minimTemp1, #minimTemp2, #minimTemp3, #minimTemp4, #minimTemp5, #minimTemp6,
-#maxiTemp1, #maxiTemp2, #maxiTemp3, #maxiTemp4, #maxiTemp5, #maxiTemp6
-#minimTempDisplay1, #minimTempDisplay2, #minimTempDisplay3, #minimTempDisplay4, #minimTempDisplay5, #minimTempDisplay6{
-    font-size:2.5vw;
-}
-#maxiTempDisplay1, #maxiTempDisplay2, #maxiTempDisplay3, #maxiTempDisplay4, #maxiTempDisplay5, #maxiTempDisplay6{
-    font-size:3vw;
+.weatherInfosAll .minimTemp, 
+.weatherInfosAll .maxiTemp,
+.weatherInfosAll .dailySunshine,
+.weatherInfosAll .rainProba{
+    display:flex;
+    flex-direction: row;
 }
 
-#imgWeather1, #imgWeather2,#imgWeather3,#imgWeather4,#imgWeather5,#imgWeather6{
-    margin-right: 10px;
-    max-width: 100%;
-            height: auto;
+#imgWeather1, #imgWeather2, #imgWeather3, #imgWeather4, #imgWeather5, #imgWeather6{
+    flex:1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-*/
 
 /*-------------------Button-----------------*/
 button{
