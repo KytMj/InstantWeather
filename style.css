@@ -1,18 +1,14 @@
-/* https://cssgradient.io/gradient-backgrounds/*/
-/*https://graphiste.com/blog/animations-css-bordures/*/
 main{
     display: flex;
     flex-direction: column;
-    /*align-items:center; -- réduit la taille du titre et de la boite*/
 }
 
 .ghost{
     display: none;
 }
 
-
 /*-------------------------------------------------------*/
-/*---------------------Fond d'écran----------------------*/
+/*----------- Background and Font Style -----------------*/
 /*-------------------------------------------------------*/
 body{
     background: linear-gradient(13deg, #f0d385 5%,#62b6b2 20%, #72b5e2 50%, #323794 100%) no-repeat center center fixed;
@@ -28,7 +24,7 @@ html,body{
     font-style: normal;
 }
 
-/*---------Titre et Carte Principale sur la même ligne----------*/
+/*---------Title and main box on the same line----------*/
 .together{
     display: flex;
     flex-direction: row;
@@ -36,11 +32,9 @@ html,body{
     align-items: center;
 }
 
-
-/*-------------------------------------------------------*/
-/*--------------Boite Infos Principales------------------*/
-/*-------------------------------------------------------*/
-
+/*------------------------------------------------------*/
+/* ------------Box moving toward transition------------ */
+/*------------------------------------------------------*/
 .BoxTransition{
     /* from https://polypane.app/css-3d-transform-examples/ */
     transform:
@@ -54,34 +48,38 @@ html,body{
     transform: translate3d(0px, 0px, -250px);
 }
 
+/*-------------------------------------------------------*/
+/*----------------Main Informations Box------------------*/
+/*-------------------------------------------------------*/
+/*----------------- before the search -------------------*/
+
+/* Background of the main box on the top right */
 .weather{
     background-color: rgb(220, 223, 220);
     color: rgb(7, 69, 124);
     padding : 4vw;
     border-radius: 1.5vw;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
-    margin-top:5%;
-    margin-right:8%;
+    margin-top: 5%;
+    margin-right: 8%;
 }
 
+/* Title of the main box ("Choisissez votre commune ...")*/
 .weather h2{
     font-size: 1.5vw;;
 }
 
+/* All label from the main box ("Code Postal","Nombre de jours"...)*/
 .codeResearch label{
-    font-size:1.5vw;
+    font-size: 1.5vw;
 }
 
-/*-------------------Elements dans la boite d'infos-------------------------*/
-.customWeatherIcon{
-    width:100px;
-    height:100px;
-}
-
+/* Form element spacing */
 .formElement{
     margin : 0.2em;
 }
 
+/* Display form element in evenly spaced column */
 form{
     display: flex;
     flex-direction: column;
@@ -90,28 +88,35 @@ form{
     font-size: 1.3vw;
 }
 
+/* Separate form element */
 form ul li{
-    padding-top:0.8vw;
+    padding-top: 0.8vw;
 }
 
+/* Dropdown menu of the town selection*/
 .selectCommune{
     font-size: 1vw;
     height: 2em;
     width: 20em;
-    border:none;
-    border-radius:7px;
+    border: none;
+    border-radius: 7px;
 }
 
+/* Size and input style of the postal code */
 input{
     font-size: 1.5vw;
-    border:none;
+    border: none;
     border-radius: 7px;
 }
 
 
+/* -------------------------------------------------*/
+/*---------- Main informations in the box  ---------*/
+/* --------- on the top right of the screen --------*/
+/*----------------- after the search----------------*/
+/* -------------------------------------------------*/
 
-/*-------------- Informations Principales dans la boite ---------------*/
-/*-----------------Après la recherche---------------------------------*/
+/* Display of the informations in the main box after the search */
 .weatherInfos{
     display:flex;
     flex-direction: row;
@@ -121,12 +126,14 @@ input{
     font-size: 1vw;
 }
 
+/* Display in column for the temperatures */
 .minimTemp, .maxiTemp{
     display:flex;
     flex-direction: column;
     text-align: center;
 }
 
+/* Weather Icon at the top of the first card */
 .weather img{
     display: block;
     margin-left: auto;
@@ -134,17 +141,23 @@ input{
     width:10vw;
 }
 
+/* Bigger size for the minimum temperature of the main box*/
 .minimTempDisplay{
     font-size:2vw;
 }
+
+/* Bigger size for the maximum temperature of the main box*/
 .maxiTempDisplay{
     font-size:3vw;
 }
-.dailySunshine{
-    font-size:1vw;
-}
 
-/* -------------Cartes ------------*/
+/* --------------------------------------------------------------*/
+/*---------- Informations of the number of days chosen  ---------*/
+/* --------------- on the bottom of the screen ------------------*/
+/*--------------------- after the search-------------------------*/
+/* --------------------------------------------------------------*/
+
+/* Contains all the cards of the different days */
 .forecast{
     display:flex;
     flex-direction: column;
@@ -153,6 +166,7 @@ input{
     margin:2%;
 }
 
+/* Separate display for each day in an information box */
 .viewInfos{
     display:flex;
     flex-direction: row-reverse;
@@ -169,99 +183,113 @@ input{
     margin:1%;
 }
 
+/* Informations of the day on the right of the card */
 .weatherInfosAll{
-    flex:3;
+    flex: 3;
     color: rgb(7, 69, 124);
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row wrap; 
 }
 
+/* Information label on the top and data under it */
 .weatherInfosAll .minimTemp, 
 .weatherInfosAll .maxiTemp,
 .weatherInfosAll .dailySunshine,
 .weatherInfosAll .rainProba,
 .right{
-    display:flex;
+    display: flex;
     flex-direction: column;
-    padding:1%;
-    flex: 1;
+    padding: 1%;
+    flex: 1; /* each data takes the same size */
 }
 
+/* Non-selectable informations display ( temperatures, daily sunshine and rain probability)*/
 .weatherInfosAll .minimTemp, 
 .weatherInfosAll .maxiTemp,
 .weatherInfosAll .dailySunshine,
 .weatherInfosAll .rainProba{
-    font-size:1.2vw;
+    font-size: 1.2vw;
     border-radius: 10px;
     flex-basis: 20%;
-    background-color:rgba(231, 231, 231, 0.836) ;
+    background-color:rgba(231, 231, 231, 0.836) ; /* Lighter color to make it stands out */
 }
 
+/* Images of each day */
 #imgWeather1, #imgWeather2, #imgWeather3, #imgWeather4, #imgWeather5, #imgWeather6{
-    flex:1;
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     justify-content: space-around; /* Espace entre les éléments */
-    object-fit: cover;
 }
 
-
+/* Size of all images */
 .customWeatherIcon{
-    width:15vw;
-    height:auto;
+    width: 15vw;
+    height: auto;
 }
 
+/* Bigger size for the minimum temperature to make it stands out */
 #minimTempDisplay1,#minimTempDisplay2,#minimTempDisplay3,#minimTempDisplay4,#minimTempDisplay5,#minimTempDisplay6{
-    font-size:2vw;
+    font-size: 2vw;
 }
 
+/* Bigger size for the maximum temperature to make it stands out */
 #maxiTempDisplay1,#maxiTempDisplay2,#maxiTempDisplay3,#maxiTempDisplay4,#maxiTempDisplay5,#maxiTempDisplay6{
-    font-size:2.7vw;
+    font-size: 2.7vw;
 }
 
-/*-------------------Button-----------------*/
+/* --------------------------------------------------------------*/
+/*---------------------- Validation Button ----------------------*/
+/* --------------------------------------------------------------*/
+
 button{
     width : 50%;
-    padding:0.3vw;
-    background-color:rgb(91, 167, 211);
+    padding: 0.3vw;
+    background-color: rgb(91, 167, 211);
     color : white;
     border-radius: 0.5em;
     box-shadow: 2px 2px 2px rgb(13, 93, 117);
-    margin-left:25%;
+    margin-left: 25%;
     border: none;
 }
+
 button:hover{
     background-color: rgb(44, 135, 172);
     color : rgb(255, 255, 255);
     box-shadow: none;
 }
-/*------------------------------------------*/
 
 
 /*-------------------------------------------------------*/
-/*-------------------------Titre-------------------------*/
+/*---------Title on the top left of the screen ----------*/
 /*-------------------------------------------------------*/
+
 .Title{
     margin: 13% 10% 0 10%;
-    color:white;
+    color: white;
     
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 
+/* Display of "Instant Weather" */
 .Title h1{
-    margin-bottom:0;
+    margin-bottom: 0;
     font-size: 3.5vw;
 }
 
-
+/* Display of the sentence under "Instant Weather" */
 .Title p{
     font-size: 1.3vw;
 }
 
-/* ----------- RESPONSIVE PARAMETERS ----------- */
+/*-------------------------------------------------------*/
+/*--------------- Responsive Parameters -----------------*/
+/*-------------------------------------------------------*/
+
+/* For Tablets */
 @media only screen and (max-width: 1100px) {
     body {
         background: linear-gradient(13deg,#62b6b2 20%, #72b5e2 50%) no-repeat center center fixed;
@@ -281,7 +309,7 @@ button:hover{
     
     .weather{
         padding : 5%;
-        margin-right:0;
+        margin-right: 0;
     }
     .weather h2{
         font-size: 3vw;;
@@ -293,7 +321,7 @@ button:hover{
     }
 
     form ul li{
-        padding-top:1vw;
+        padding-top: 1vw;
     }
 
     .BoxTransition{
@@ -320,11 +348,11 @@ button:hover{
     }
     
     .maxiTempDisplay{
-        font-size:5.5vw;
+        font-size: 5.5vw;
     }
 
     .rainProba{
-        font-size:1.9vw;
+        font-size: 1.9vw;
     }
     
     .dailySunshine{
@@ -341,13 +369,14 @@ button:hover{
     }
     
     form, #minimTempDisplay1,#minimTempDisplay2,#minimTempDisplay3,#minimTempDisplay4,#minimTempDisplay5,#minimTempDisplay6{
-        font-size:3vw;
+        font-size: 3vw;
     }
     #maxiTempDisplay1,#maxiTempDisplay2,#maxiTempDisplay3,#maxiTempDisplay4,#maxiTempDisplay5,#maxiTempDisplay6{
-        font-size:3.5vw;
+        font-size: 3.5vw;
     }
 }
 
+/* For Smartphones */
 @media only screen and (max-width: 600px) {
     body {
         background: linear-gradient(13deg,#d18033 10%,#d4be9d 20%, #528dcf 50%) no-repeat center center fixed;
@@ -378,18 +407,18 @@ button:hover{
     }
 
     .viewInfos .weatherInfos{
-        font-size:3vw;
+        font-size: 3vw;
     }
 
     .minimTempDisplay, #minimTempDisplay1, #minimTempDisplay2, #minimTempDisplay3, #minimTempDisplay4, #minimTempDisplay5, #minimTempDisplay6{
-        font-size:6vw;
+        font-size: 6vw;
     }
     .maxiTempDisplay, #maxiTempDisplay1, #maxiTempDisplay2, #maxiTempDisplay3, #maxiTempDisplay4, #maxiTempDisplay5, #maxiTempDisplay6{
-        font-size:8vw;
+        font-size: 8vw;
     }
 
     .forecast{
-        margin-top:18%;
+        margin-top: 18%;
     }
     .viewInfos{
         flex-direction: column-reverse;
@@ -409,11 +438,11 @@ button:hover{
     .weatherInfosAll .maxiTemp,
     .weatherInfosAll .dailySunshine,
     .weatherInfosAll .rainProba{
-        font-size:3.5vw;
-        background-color:rgba(231, 231, 231, 0) ;
+        font-size: 3.5vw;
+        background-color: rgba(231, 231, 231, 0) ;
     }
 
     .customWeatherIcon, .weather img{
-        width:20vw;
+        width: 20vw;
     }
 }
