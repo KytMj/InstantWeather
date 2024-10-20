@@ -17,6 +17,7 @@ let dataTypes = ["°C","°C","%", " heure(s)","",""," mm"," km/h","°"]; //unit 
 // all lists can be modified at will and will adapt
 // id, dataNames and dataTyes MUST have the same size !
 
+//retrieves the informations of the cities corresponding to their postal code
 document.querySelector('#postalCode').addEventListener('input', function (){
     if(this.value.length == 5) {
         let url = `https://geo.api.gouv.fr/communes?codePostal=${this.value}&type=commune-actuelle&fields=nom,code,codesPostaux&format=json&geometry=centre`;
@@ -39,9 +40,8 @@ document.querySelector('#postalCode').addEventListener('input', function (){
     }
 });
 
+//retrieves and displays information about today's weather
 function weatherInformationsToday(){
-    //let city = select.options[select.selectedIndex].text;    donne le nom de la commune
-
     let insee = select.value;   //donne la valeur insee de la commune sélectionnée
     cityName = select.options[select.selectedIndex].text;   
     let url = `https://api.meteo-concept.com/api/forecast/daily?token=${myToken}&insee=${insee}`;
@@ -151,6 +151,7 @@ function changingWeather(weather, imgWeather){
     let img = document.createElement('img');
     img.className = "customWeatherIcon";
     img.src = `./img/${imgName}`;
+    img.alt = "Image de la météo du jour";
     imgWeather.appendChild(img);
 }
 
