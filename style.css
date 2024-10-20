@@ -286,6 +286,27 @@ button:hover{
 }
 
 /*-------------------------------------------------------*/
+/*----------------------- Footer ------------------------*/
+/*-------------------------------------------------------*/
+
+footer {
+    background-color: rgba(220, 223, 220, 0.616);
+    color: rgb(7, 69, 124);
+    padding: 20px;
+    text-align: center;
+    font-size:0.9vw;
+}
+
+.footerContent a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+.footerContent a:hover {
+    text-decoration: underline;
+}
+
+/*-------------------------------------------------------*/
 /*--------------- Responsive Parameters -----------------*/
 /*-------------------------------------------------------*/
 
@@ -374,6 +395,10 @@ button:hover{
     #maxiTempDisplay1,#maxiTempDisplay2,#maxiTempDisplay3,#maxiTempDisplay4,#maxiTempDisplay5,#maxiTempDisplay6{
         font-size: 3.5vw;
     }
+
+    footer {
+        font-size:1.8vw;
+    }
 }
 
 /* For Smartphones */
@@ -444,5 +469,9 @@ button:hover{
 
     .customWeatherIcon, .weather img{
         width: 20vw;
+    }
+
+    footer {
+        font-size:2.5vw;
     }
 }
