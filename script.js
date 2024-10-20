@@ -10,7 +10,12 @@ let nbDaysNumber = document.getElementById("nbDaysNumber");
 let cityName;
 let todayDate = new Date();
 let id = ["minimTemp", "maxiTemp", "rainProba", "dailySunshine", "latitude", "longitude", "rr10", "wind10m", "dirwind10m"];
-let criteria = ["latitude", "longitude", "rr10", "wind10m", "dirwind10m"];
+let criteria = ["latitude", "longitude", "rr10", "wind10m", "dirwind10m"];  //for the checkboxes
+
+let dataNames = ["tmin", "tmax", "probarain", "sun_hours", "latitude", "longitude", "rr10", "wind10m", "dirwind10m"] //name of the data in the database
+let dataTypes = ["°C","°C","%", " heure(s)","",""," mm"," km/h","°"]; //unit of the data in the database
+// all lists can be modified at will and will adapt
+// id, dataNames and dataTyes MUST have the same size !
 
 document.querySelector('#postalCode').addEventListener('input', function (){
     if(this.value.length == 5) {
@@ -53,18 +58,19 @@ function weatherInformationsToday(){
     ).then((data) => { 
         document.getElementById("cityName").innerText = cityName;
         document.getElementById("todayDate").innerText = todayDate.toLocaleDateString(undefined, {dateStyle: 'long'});
-        document.getElementById("minimTempDisplay").innerText = data.forecast[0].tmin + "°C";
-        document.getElementById("maxiTempDisplay").innerText = data.forecast[0].tmax + "°C";
-        document.getElementById("rainProbaDisplay").innerText = data.forecast[0].probarain + "%";
-        document.getElementById("dailySunshineDisplay").innerText = data.forecast[0].sun_hours + " heure(s)";
-        document.getElementById("latitudeDisplay").innerText = data.forecast[0].latitude;
-        document.getElementById("longitudeDisplay").innerText = data.forecast[0].longitude;
-        document.getElementById("rr10Display").innerText = data.forecast[0].rr10;
-        document.getElementById("wind10mDisplay").innerText = data.forecast[0].wind10m;
-        document.getElementById("dirwind10mDisplay").innerText = data.forecast[0].dirwind10m;
+
+
+        //writes and executes code for each inforamtion as such (example for the minimum temperature) :
+        // document.getElementById("minimTempDisplay").innerText = data.forecast[0].tmin + "°C";
+        // it inserts the values of the current day into the first weater card
+        for(let i = 0; i < id.length; i++){       
+            eval("document.getElementById(id[i] + \"Display\").innerText = data.forecast[0]."+ dataNames[i] + "+ dataTypes[i]");  //didn't know this function : https://stackoverflow.com/questions/14014371/how-do-i-convert-a-string-into-an-executable-line-of-code-in-javascript
+        }
 
         changingWeather(data.forecast[0].weather, document.getElementById("imgWeather"));
 
+
+        //creates cards for the upcoming days
         if(nbDays.value > 1){
             forecastDays(nbDays.value, data);
             document.getElementById("forecast").className = "forecast";
@@ -74,9 +80,9 @@ function weatherInformationsToday(){
     });
 }
 
-//
+//hides/shows data based on if it was asked or not (checkboxes)
 function checkboxHandler(){
-    for (let i = 1; i < nbDays.value; i++) {
+    for (let i = 1; i < nbDays.value; i++) { //cards of the upcoming days
         for (let j = 0; j < 5; j++) {
             if(checkboxes[j].checked){
                 document.getElementById(criteria[j]+""+i).className = "weatherInfos right";
@@ -86,7 +92,8 @@ function checkboxHandler(){
         }
     }
 
-    for (let j = 0; j < 5; j++) {
+    
+    for (let j = 0; j < 5; j++) { //card of the current day
         if(checkboxes[j].checked){
             document.getElementById(criteria[j]).className = "weatherInfos";
         }else{
@@ -147,6 +154,8 @@ function changingWeather(weather, imgWeather){
     imgWeather.appendChild(img);
 }
 
+
+
 //show the informations for the selected days by the user
 function forecastDays(numberOfDays, data){
     for (let i = 1; i < numberOfDays; i++) {
@@ -198,33 +207,16 @@ function forecastDays(numberOfDays, data){
 
         changingWeather(data.forecast[i].weather, document.getElementById("imgWeather"+i));
 
-        document.getElementById("textInfo" + "ID" + i + ":" +0).innerText = "Température minimale : ";
-        document.getElementById("minimTempDisplay" + i).innerText = data.forecast[i].tmin + "°C";
-
-        document.getElementById("textInfo" + "ID" + i + ":" +1).innerText = "Température maximale : ";
-        document.getElementById(`maxiTempDisplay` + i).innerText = data.forecast[i].tmax + "°C";
-
-        document.getElementById("textInfo" + "ID" + i + ":" +2).innerText = "Probabilité de pluie : ";
-        document.getElementById(`rainProbaDisplay` + i).innerText = data.forecast[i].probarain + "%";
-
-        document.getElementById("textInfo" + "ID" + i + ":" +3).innerText = "Ensoleillement journalier : ";
-        document.getElementById(`dailySunshineDisplay` + i).innerText = data.forecast[i].sun_hours + " heure(s)";
-
-        document.getElementById("textInfo" + "ID" + i + ":" +4).innerText = "Latitude : ";
-        document.getElementById(`latitudeDisplay` + i).innerText = data.forecast[i].latitude;
-
-        document.getElementById("textInfo" + "ID" + i + ":" +5).innerText = "Longitude : " ;
-        document.getElementById(`longitudeDisplay` + i).innerText = data.forecast[i].longitude;
-
-        document.getElementById("textInfo" + "ID" + i + ":" +6).innerText = "Cumul de pluie (mm) : " ;
-        document.getElementById(`rr10Display` + i).innerText = data.forecast[i].rr10;
-
-        document.getElementById("textInfo" + "ID" + i + ":" +7).innerText = "Vent moyen à 10m : " ;
-        document.getElementById(`wind10mDisplay` + i).innerText = data.forecast[i].wind10m;
-
-        document.getElementById("textInfo" + "ID" + i + ":" +8).innerText = "Direction du vent (°) : ";
-        document.getElementById(`dirwind10mDisplay` + i).innerText = data.forecast[i].dirwind10m;
-
+        let innerTextData = ["Température minimale : ", "Température maximale : ", "Probabilité de pluie : ", "Ensoleillement journalier : "
+                                , "Latitude : ", "Longitude : ", "Cumul de pluie : ", "Vent moyen à 10m : ", "Direction du vent : "];
+     // let dataNames = ["tmin", "tmax", "probarain", "sun_hours", "latitude", "longitude", "rr10", "wind10m", "dirwind10m"];
+     // let dataTypes = ["°C","°C","%", " heure(s)","",""," mm"," km/h","°"];
+     // so you can remember the content of these lists :)
+     
+        for(let j= 0; j < id.length; j++){
+            document.getElementById("textInfo" + "ID" + i + ":" +j).innerText = innerTextData[j];
+            eval("document.getElementById(id[j] + \"Display\" + i).innerText = data.forecast[i]." + dataNames[j] + " + dataTypes[j]");
+        }
     }
 }
 
@@ -239,7 +231,11 @@ nbDaysNumber.addEventListener("input", (e) => { //prevents user to put manually 
     }
 });
 
-nbDaysNumber.addEventListener("click", (e) =>{ // when the user clicks on number input it selects everything
+nbDaysNumber.addEventListener("click", (e) =>{ // when the user clicks on number input it selects everything (so when he types a number it replaces the content instead of adding a number)
+    nbDaysNumber.select();
+});
+
+nbDaysNumber.addEventListener("keypress", (e) =>{ // when the users types a number it replaces the old one
     nbDaysNumber.select();
 });
 
