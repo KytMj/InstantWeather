@@ -44,6 +44,8 @@ function weatherInformationsToday(){
     document.getElementById("codeResearch").className = "ghost";
     document.getElementById("viewInfos").className = "";
     document.getElementById("title").className = "ghost";
+    document.getElementById("cityName").className = "cityName";
+    document.getElementById("todayDate").className = "todayDate";
 
     fetch(url).then((response) => {
         return response.json();
@@ -72,6 +74,7 @@ function weatherInformationsToday(){
     });
 }
 
+//
 function checkboxHandler(){
     for (let i = 1; i < nbDays.value; i++) {
         for (let j = 0; j < 5; j++) {
@@ -92,6 +95,7 @@ function checkboxHandler(){
     }
 }
 
+//reset the page, criterias and values used to select the informations
 function newResearch(){
     document.getElementById("codeResearch").className = "";
     document.getElementById("viewInfos").className = "ghost";
@@ -114,7 +118,7 @@ function newResearch(){
     todayDate = new Date();
 }
 
-
+//change the weather image according to the day
 function changingWeather(weather, imgWeather){
     let imgName = "";
 
@@ -143,21 +147,27 @@ function changingWeather(weather, imgWeather){
     imgWeather.appendChild(img);
 }
 
+//show the informations for the selected days by the user
 function forecastDays(numberOfDays, data){
     for (let i = 1; i < numberOfDays; i++) {
         let weatherInfosForecast = document.createElement('div');
         weatherInfosForecast.className = "viewInfos BoxTransition";
 
+        let cityAndDate = document.createElement('div');
+        cityAndDate.className = "dateLocalite";
+
         let cityForecast = document.createElement('h2');
         cityForecast.innerText = cityName;
-        cityForecast.className = "";
-        weatherInfosForecast.appendChild(cityForecast);
+        cityForecast.className = "cityName";
+        cityAndDate.appendChild(cityForecast);
 
         let dateForecast = document.createElement('h2');
         todayDate.setDate(todayDate.getDate() + 1);
         dateForecast.innerText = todayDate.toLocaleDateString(undefined, {dateStyle: 'long'});
-        dateForecast.className = "";
-        weatherInfosForecast.appendChild(dateForecast);
+        dateForecast.className = "todayDate";
+        cityAndDate.appendChild(dateForecast);
+
+        weatherInfosForecast.appendChild(cityAndDate);
 
         let weatherIcon = document.createElement('div');
         weatherIcon.id = "imgWeather" + i ;
