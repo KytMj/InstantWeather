@@ -7,6 +7,7 @@ main{
     display: none;
 }
 
+
 /*-------------------------------------------------------*/
 /*----------- Background and Font Style -----------------*/
 /*-------------------------------------------------------*/
@@ -32,6 +33,32 @@ html,body{
     align-items: center;
 }
 
+
+/*-------------------------------------------------------*/
+/*---------Title on the top left of the screen ----------*/
+/*-------------------------------------------------------*/
+
+/* Invisible box containing the title */
+.Title{
+    margin: 13% 10% 0 10%;
+    color: white;    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/* Display of "Instant Weather" */
+.Title h1{
+    margin-bottom: 0;
+    font-size: 3.5vw;
+}
+
+/* Display of the sentence under "Instant Weather" */
+.Title p{
+    font-size: 1.3vw;
+}
+
+
 /*------------------------------------------------------*/
 /* ------------Box moving toward transition------------ */
 /*------------------------------------------------------*/
@@ -48,10 +75,11 @@ html,body{
     transform: translate3d(0px, 0px, -250px);
 }
 
+
 /*-------------------------------------------------------*/
 /*----------------Main Informations Box------------------*/
-/*-------------------------------------------------------*/
 /*----------------- before the search -------------------*/
+/*-------------------------------------------------------*/
 
 /* Background of the main box on the top right */
 .weather{
@@ -60,7 +88,7 @@ html,body{
     padding : 4vw;
     border-radius: 1.5vw;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
-    margin-top: 5%;
+    margin-top: 2%;
     margin-right: 8%;
 }
 
@@ -109,6 +137,11 @@ input{
     border-radius: 7px;
 }
 
+/* To not show the dot before checkbox */
+ul {
+    list-style-type: none;
+}
+
 
 /* -------------------------------------------------*/
 /*---------- Main informations in the box  ---------*/
@@ -151,6 +184,16 @@ input{
     font-size:3vw;
 }
 
+/* Style of the main box of the city name and the date */
+.weather .todayDate, .weather .cityName{
+    text-align: center;
+    border-radius: 10px;
+    margin:5px;
+    background-color:rgba(21, 142, 248, 0.26) ;
+    font-size: 1vw;
+}
+
+
 /* --------------------------------------------------------------*/
 /*---------- Informations of the number of days chosen  ---------*/
 /* --------------- on the bottom of the screen ------------------*/
@@ -177,10 +220,6 @@ input{
     border-radius: 1vw;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
     justify-content: space-around;
-}
-
-.viewInfos .weatherInfos{
-    margin:1%;
 }
 
 /* Informations of the day on the right of the card */
@@ -239,10 +278,29 @@ input{
     font-size: 2.7vw;
 }
 
+/* Style of the box which contains the city name and the date*/
+.dateLocalite{
+    color: rgb(7, 69, 124);
+    flex:0.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around; /* Espace entre les éléments */
+    background-color:rgba(21, 142, 248, 0.26) ;
+    border-radius: 10px;
+}
+
+/* Size of the city name and the date */
+.cityName, .todayDate{
+    padding:2%;
+    font-size: 1.3vw;
+}
+
+
 /* --------------------------------------------------------------*/
 /*---------------------- Validation Button ----------------------*/
 /* --------------------------------------------------------------*/
-
 button{
     width : 50%;
     padding: 0.3vw;
@@ -254,6 +312,7 @@ button{
     border: none;
 }
 
+/* When the mouse hovers the button */
 button:hover{
     background-color: rgb(44, 135, 172);
     color : rgb(255, 255, 255);
@@ -262,49 +321,29 @@ button:hover{
 
 
 /*-------------------------------------------------------*/
-/*---------Title on the top left of the screen ----------*/
-/*-------------------------------------------------------*/
-
-.Title{
-    margin: 13% 10% 0 10%;
-    color: white;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-/* Display of "Instant Weather" */
-.Title h1{
-    margin-bottom: 0;
-    font-size: 3.5vw;
-}
-
-/* Display of the sentence under "Instant Weather" */
-.Title p{
-    font-size: 1.3vw;
-}
-
-/*-------------------------------------------------------*/
 /*----------------------- Footer ------------------------*/
 /*-------------------------------------------------------*/
 
+/* Box containing the footer informations */
 footer {
     background-color: rgba(220, 223, 220, 0.616);
     color: rgb(7, 69, 124);
     padding: 20px;
     text-align: center;
-    font-size:0.9vw;
+    font-size: 0.9vw;
 }
 
+/* Style of the link of the footer */
 .footerContent a {
     color: rgb(0, 0, 0);
     text-decoration: none;
 }
 
+/* Style of the link when the mouse hovers it */
 .footerContent a:hover {
     text-decoration: underline;
 }
+
 
 /*-------------------------------------------------------*/
 /*--------------- Responsive Parameters -----------------*/
@@ -312,14 +351,13 @@ footer {
 
 /* For Tablets */
 @media only screen and (max-width: 1100px) {
-    body {
-        background: linear-gradient(13deg,#62b6b2 20%, #72b5e2 50%) no-repeat center center fixed;
-    }
-
+    
+    /* To display the title above the box */
     .together{
         flex-direction: column;
     }
 
+    /* --- Different font sizes for greater consistency --- */
     .Title h1, .minimTempDisplay{
         font-size: 4vw;
     }
@@ -327,35 +365,15 @@ footer {
     .Title p{
         font-size: 2.5vw;
     }
-    
-    .weather{
-        padding : 5%;
-        margin-right: 0;
-    }
+
     .weather h2{
         font-size: 3vw;;
     }
 
     .codeResearch label{
         font-size: 3vw;
-        
     }
-
-    form ul li{
-        padding-top: 1vw;
-    }
-
-    .BoxTransition{
-        transform:
-        perspective(350vw)
-        translate3d(0px, 0px, -50px)
-        scale(1, 1);
-        transition: 1.5s ease-in-out transform;
-    }
-    .BoxTransition:hover {
-        transform: translate3d(0px, 0px, -50px);
-    }
-
+    
     .weatherInfos{
         font-size: 1.7vw;
     }
@@ -375,13 +393,55 @@ footer {
     .rainProba{
         font-size: 1.9vw;
     }
+
+    form, #minimTempDisplay1,#minimTempDisplay2,#minimTempDisplay3,#minimTempDisplay4,#minimTempDisplay5,#minimTempDisplay6{
+        font-size: 3vw;
+    }
     
+    #maxiTempDisplay1,#maxiTempDisplay2,#maxiTempDisplay3,#maxiTempDisplay4,#maxiTempDisplay5,#maxiTempDisplay6{
+        font-size: 3.5vw;
+    }
+
+    footer{
+        font-size: 1.8vw;
+    }
+    
+    .cityName, .todayDate, .weather .todayDate, .weather .cityName{
+        font-size: 2vw;
+    }
+    /* ------------------------------------------------ */
+    
+    /* Center the main box*/
+    .weather{
+        padding : 5%;
+        margin-right: 0;
+    }
+    
+    /* Bigger spacing for parameters of the main box */
+    form ul li{
+        padding-top: 1vw;
+    }
+
+    /* Smoother transition */
+    .BoxTransition{
+        transform:
+        perspective(350vw)
+        translate3d(0px, 0px, -50px)
+        scale(1, 1);
+        transition: 1.5s ease-in-out transform;
+    }
+    .BoxTransition:hover{
+        transform: translate3d(0px, 0px, -50px);
+    }
+    
+    /* Smaller data to make it looks better */
     .dailySunshine{
         display: flex;
         flex-direction: column;
         font-size: 1.9vw;
     }
     
+    /* Set 2 data per line instead of 4 */
     .weatherInfosAll .minimTemp, 
     .weatherInfosAll .maxiTemp,
     .weatherInfosAll .dailySunshine,
@@ -389,28 +449,20 @@ footer {
         flex-basis: 45%;
     }
     
-    form, #minimTempDisplay1,#minimTempDisplay2,#minimTempDisplay3,#minimTempDisplay4,#minimTempDisplay5,#minimTempDisplay6{
-        font-size: 3vw;
-    }
-    #maxiTempDisplay1,#maxiTempDisplay2,#maxiTempDisplay3,#maxiTempDisplay4,#maxiTempDisplay5,#maxiTempDisplay6{
-        font-size: 3.5vw;
-    }
-
-    footer {
-        font-size:1.8vw;
-    }
+    /* Bigger space for the box containing the city and the date */
+    .dateLocalite{
+        flex: 1;
+    }   
 }
 
 /* For Smartphones */
 @media only screen and (max-width: 600px) {
-    body {
-        background: linear-gradient(13deg,#d18033 10%,#d4be9d 20%, #528dcf 50%) no-repeat center center fixed;
-    }
-
+    /* Bottom margin is bigger */
     .Title{
         margin: 13% 10% 15% 10%;
     }
 
+    /* --- Different font sizes for greater consistency --- */
     .Title h1{
         font-size: 8vw;
     }
@@ -419,16 +471,8 @@ footer {
         font-size: 4vw;
     }
 
-    .weather{
-        padding : 5%;
-    }
-
     .weather h2, .codeResearch label{
         font-size: 5vw;;
-    }
-
-    form ul li{
-        padding-top:1.5vw;
     }
 
     .viewInfos .weatherInfos{
@@ -442,23 +486,42 @@ footer {
         font-size: 8vw;
     }
 
+    footer {
+        font-size: 2.5vw;
+    }
+
+    .cityName, .todayDate{
+        font-size: 4vw;
+    }
+    /* ------------------------------------------------ */
+
+    /* Bigger spacing for parameters of the main box */
+    form ul li{
+        padding-top: 1.5vw;
+    }
+
+    /* To space secondary cards from the main one */
     .forecast{
         margin-top: 18%;
     }
+
+    /* Data of the secondary cards in column, with the image first*/
     .viewInfos{
         flex-direction: column-reverse;
     }
 
+    /* */
     .weatherInfosAll{
         display: flex;
         flex-flow: column wrap;
-
     }
 
+    /* Data starting on the left, not in the middle*/
     .right{
         flex-direction: row;
     }
     
+    /* Remove background color and change font size of data of the secondary cards */
     .weatherInfosAll .minimTemp, 
     .weatherInfosAll .maxiTemp,
     .weatherInfosAll .dailySunshine,
@@ -467,15 +530,13 @@ footer {
         background-color: rgba(231, 231, 231, 0) ;
     }
 
+    /* Bigger weather icons */
     .customWeatherIcon, .weather img{
         width: 20vw;
     }
 
-    footer {
-        font-size:2.5vw;
-    }
-}
-
-ul {
-    list-style-type: none;
+    /* City name and date on the same row */
+    .dateLocalite{
+        flex-direction: row;
+    }  
 }
