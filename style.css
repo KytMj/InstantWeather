@@ -446,3 +446,7 @@ button:hover{
         width: 20vw;
     }
 }
+
+ul {
+    list-style-type: none;
+}
