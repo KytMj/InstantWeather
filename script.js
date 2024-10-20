@@ -10,12 +10,7 @@ let nbDaysNumber = document.getElementById("nbDaysNumber");
 let cityName;
 let todayDate = new Date();
 let id = ["minimTemp", "maxiTemp", "rainProba", "dailySunshine", "latitude", "longitude", "rr10", "wind10m", "dirwind10m"];
-
-var latitudeAff
-var longitudeAff
-var precipitationsAff
-var vitVentAff
-var dirVentAff
+let criteria = ["latitude", "longitude", "rr10", "wind10m", "dirwind10m"];
 
 document.querySelector('#postalCode').addEventListener('input', function (){
     if(this.value.length == 5) {
@@ -78,72 +73,22 @@ function weatherInformationsToday(){
 }
 
 function checkboxHandler(){
-    latitudeAff = checkboxes[0].checked;
-    longitudeAff = checkboxes[1].checked;
-    precipitationsAff = checkboxes[2].checked;
-    vitVentAff = checkboxes[3].checked;
-    dirVentAff = checkboxes[4].checked;
-
     for (let i = 1; i < nbDays.value; i++) {
-        if(latitudeAff){
-            document.getElementById("latitude"+i).className = "weatherInfos right";
-        }else{
-            document.getElementById("latitude"+i).className = "ghost";
-        }
-
-        if(longitudeAff){
-            document.getElementById("longitude"+i).className = "weatherInfos right";
-        }else{
-            document.getElementById("longitude"+i).className = "ghost";
-        }
-
-        if(precipitationsAff){
-            document.getElementById("rr10"+i).className = "weatherInfos right";
-        }else{
-            document.getElementById("rr10"+i).className = "ghost";
-        }
-
-        if(vitVentAff){
-            document.getElementById("wind10m"+i).className = "weatherInfos right";
-        }else{
-            document.getElementById("wind10m"+i).className = "ghost";
-        }
-
-        if(dirVentAff){
-            document.getElementById("dirwind10m"+i).className = "weatherInfos right";
-        }else{
-            document.getElementById("dirwind10m"+i).className = "ghost";
+        for (let j = 0; j < 5; j++) {
+            if(checkboxes[j].checked){
+                document.getElementById(criteria[j]+""+i).className = "weatherInfos right";
+            }else{
+                document.getElementById(criteria[j]+""+i).className = "ghost";
+            }
         }
     }
 
-    if(latitudeAff){
-        document.getElementById("latitude").className = "weatherInfos";
-    }else{
-        document.getElementById("latitude").className = "ghost";
-    }
-
-    if(longitudeAff){
-        document.getElementById("longitude").className = "weatherInfos";
-    }else{
-        document.getElementById("longitude").className = "ghost";
-    }
-
-    if(precipitationsAff){
-        document.getElementById("rr10").className = "weatherInfos";
-    }else{
-        document.getElementById("rr10").className = "ghost";
-    }
-
-    if(vitVentAff){
-        document.getElementById("wind10m").className = "weatherInfos";
-    }else{
-        document.getElementById("wind10m").className = "ghost";
-    }
-
-    if(dirVentAff){
-        document.getElementById("dirwind10m").className = "weatherInfos";
-    }else{
-        document.getElementById("dirwind10m").className = "ghost";
+    for (let j = 0; j < 5; j++) {
+        if(checkboxes[j].checked){
+            document.getElementById(criteria[j]).className = "weatherInfos";
+        }else{
+            document.getElementById(criteria[j]).className = "ghost";
+        }
     }
 }
 
@@ -287,3 +232,4 @@ nbDaysNumber.addEventListener("input", (e) => { //prevents user to put manually 
 nbDaysNumber.addEventListener("click", (e) =>{ // when the user clicks on number input it selects everything
     nbDaysNumber.select();
 });
+
